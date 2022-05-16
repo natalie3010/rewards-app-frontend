@@ -30,70 +30,70 @@ function SideBar() {
           <NavUL>
             <NavLi>
               <NavButton to="/">
-                <IconSpan/>
+                <IconSpan />
                 <IconImg src={AlphaIcon} />
                 <NavButtonH2>The Alpha</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton to="/">
-                <IconSpan/>
+                <IconSpan />
                 <IconImg src={ShiningStarIcon} />
                 <NavButtonH2>Shining Star</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton to="/">
-              <IconSpan/>
+                <IconSpan />
                 <IconImg src={ProfessionalIcon} />
                 <NavButtonH2>Mr./Ms. Professional</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton to="/">
-              <IconSpan/>
+                <IconSpan />
                 <IconImg src={PositiveRadiatorIcon} />
                 <NavButtonH2>Positive Radiator</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton to="/">
-              <IconSpan/>
+                <IconSpan />
                 <IconImg src={PathFinderIcon} />
                 <NavButtonH2>Path Finder</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton to="/">
-              <IconSpan/>
+                <IconSpan />
                 <IconImg src={SpartanSpiritIcon} />
                 <NavButtonH2>Spartan Spirit Award</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton to="/">
-              <IconSpan/>
+                <IconSpan />
                 <IconImg src={CommunityIcon} />
                 <NavButtonH2>Community-centred</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton to="/">
-              <IconSpan/>
+                <IconSpan />
                 <IconImg src={AboveAndBeyondIcon} />
                 <NavButtonH2>Above and Beyond</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton to="/">
-              <IconSpan/>
+                <IconSpan />
                 <IconImg src={BeyondGratefulIcon} />
-                <NavButtonH2>Beyond Graetful</NavButtonH2>
+                <NavButtonH2>Beyond Grateful</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton to="/">
-              <IconSpan/>
+                <IconSpan />
                 <IconImg src={PlacemakerIcon} />
                 <NavButtonH2>Placemaker</NavButtonH2>
               </NavButton>

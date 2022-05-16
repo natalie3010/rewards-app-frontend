@@ -1,5 +1,5 @@
-import SideBar from "../components/Sidebar";
-import "./FormLayout.css";
+import SideBar from "../../components/Sidebar";
+import "./FormLayoutNominator.css";
 
 function FormLayoutNominator() {
   return (

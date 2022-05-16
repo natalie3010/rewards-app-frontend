@@ -137,6 +137,7 @@ function FormLayoutNominee() {
           <div class="row mb-3">
             <div class="col-sm-10 offset-sm-10">
               <button
+                className="Nextbtn"
                 onClick={() => {
                   navigate("/Nominator");
                 }}
