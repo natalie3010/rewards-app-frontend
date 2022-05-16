@@ -1,8 +1,10 @@
+import SideBar from "../components/Sidebar";
 import "./FormLayout.css";
 
 function FormLayoutNominator() {
   return (
     <>
+      <SideBar />
       <h1 className="Title">Your Details</h1>
       <form>
         <div class="row mb-3">

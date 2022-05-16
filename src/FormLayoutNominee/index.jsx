@@ -1,11 +1,13 @@
 import "./FormLayout.css";
 import { useNavigate } from "react-router-dom";
+import SideBar from "../components/Sidebar";
 
 function FormLayoutNominee() {
   const navigate = useNavigate();
 
   return (
     <>
+      <SideBar />
       <h1 className="Title">Nominee Details</h1>
       <form>
         <div class="row mb-3">
