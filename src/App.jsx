@@ -1,7 +1,7 @@
 import "./App.css";
 import FormLayoutNominator from "./pages/FormLayourNominator";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import FormLayoutNominee from "./FormLayoutNominee/index";
+import FormLayoutNominee from "./pages/FormLayoutNominee";
 import SideBar from "./components/Sidebar";
 import Login from "./pages/Admin";
 
