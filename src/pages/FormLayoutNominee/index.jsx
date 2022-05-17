@@ -1,6 +1,6 @@
 import "./FormLayout.css";
 import { useNavigate } from "react-router-dom";
-import SideBar from "../components/Sidebar";
+import SideBar from "../../components/Sidebar";
 
 function FormLayoutNominee() {
   const navigate = useNavigate();
