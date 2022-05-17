@@ -1,6 +1,6 @@
 //CSS
-import { Link } from 'react-router-dom';
-import styled from 'styled-components';
+import { Link } from "react-router-dom";
+import styled from "styled-components";
 
 export const SideBarCont = styled.div`
   border-bottom: 2px solid #fff;
@@ -82,7 +82,7 @@ export const NavButtonH2 = styled.h2`
   display: flex;
   text-decoration: none;
   color: #fff;
-  font-family: 'Ubuntu';
+  font-family: "Ubuntu";
   font-size: 3vh;
   font-weight: 100;
   text-align: start;
@@ -100,4 +100,4 @@ export const IconSpan = styled.span`
 export const IconImg = styled.img`
   height: 40px;
   margin-left: -20px;
-  `;
+`;
