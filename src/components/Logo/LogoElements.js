@@ -15,6 +15,7 @@ export const HeaderCont = styled.div`
 export const LogoLink = styled(Link)``;
 
 export const LogoImg = styled.img`
-  max-width: 300px;
+  width: 380px;
   margin-right: 30px;
+  margin-top: 10px;
 `;
