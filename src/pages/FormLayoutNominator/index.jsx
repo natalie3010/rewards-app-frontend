@@ -1,106 +1,51 @@
+import { Form, Row, Col, Button } from "react-bootstrap";
+import LogoHeader from "../../components/Logo";
 import SideBar from "../../components/Sidebar";
-import "./FormLayoutNominator.css";
-
+import { Link } from "react-router-dom";
+import { FormContainer, Title, TitleContainer } from "./NominatorElements";
+import "./NominatorStyling.css";
 function FormLayoutNominator() {
   return (
     <>
-      <SideBar />
-      <h1 className="Title">Your Details</h1>
-      <form>
-        <div class="row mb-3">
-          <label for="NomineeName" class="col-sm-2 col-form-label">
-            Your Name
-          </label>
-
-          <div class="col-sm-10">
-            <input
-              type="name"
-              class="form-control"
-              id="NomineeName"
-              placeholder="First Name"
-            ></input>
-            {/* <label for="NomineLastName" class="col-sm-2 col-form-label">
-  </label> */}
-            <div class="col-sm-10">
-              <input
-                type="name"
-                class="form-control"
-                id="NomineeLastName"
-                placeholder="Last Name"
-              ></input>
-            </div>
-          </div>
-        </div>
-        <div class="row mb-3">
-          <label for="inputEmail" class="col-sm-2 col-form-label">
-            Your Email
-          </label>
-          <div class="col-sm-10">
-            <input
-              type="email"
-              class="form-control"
-              id="inputEmail"
-              placeholder="Email"
-            ></input>
-          </div>
-        </div>
-
-        <div class="col-sm-10 offset-sm-2">
-          <div className="dropdown">
-            <button
-              class="btn btn-primary dropdown-toggle"
-              type="button"
-              data-toggle="dropdown"
-            >
-              Your current Capability Unit <span class="caret"></span>
-            </button>
-            <div className="dropdown-menu">
-              <li>
-                <a href="#">MAPII</a>
-              </li>
-              <li>
-                <a href="#">Insights and Data</a>
-              </li>
-            </div>
-          </div>
-        </div>
-
-        <div class="column">
-          Date Submitted*
-          <input
-            type="name"
-            class="form-control"
-            id="Month"
-            placeholder="Month"
-          ></input>
-        </div>
-        <div class="column2">
-          {" "}
-          <input
-            type="name"
-            class="form-control"
-            id="Day"
-            placeholder="Day"
-          ></input>
-        </div>
-        <div class="column3">
-          {" "}
-          <input
-            type="name"
-            class="form-control"
-            id="Year"
-            placeholder="Year"
-          ></input>
-        </div>
-
-        <div class="row mb-3">
-          <div class="col-sm-10 offset-sm-10">
-            <button type="next" class="btn btn-primary">
-              Submit
-            </button>
-          </div>
-        </div>
-      </form>
+      <LogoHeader></LogoHeader>
+      <SideBar></SideBar>
+      <FormContainer>
+        <TitleContainer>
+          <Title> Your Details </Title>
+        </TitleContainer>
+        <Form>
+          <Row className="mb-3">
+            <Form.Group as={Col} controlId="formGridNomineeName">
+              <Form.Label>Your Name</Form.Label>
+              <Form.Control type="name" placeholder="Enter Name" />
+            </Form.Group>
+            <Form.Group as={Col} controlId="formGridEmail">
+              <Form.Label>Your Email</Form.Label>
+              <Form.Control type="email" placeholder="Enter Email" />
+            </Form.Group>
+          </Row>
+          <Form.Group className="mb-3" as={Col} controlId="formGridState">
+            <Form.Label> Your current Capability Unit</Form.Label>
+            <Form.Select defaultValue="Choose...">
+              <option>--Select--</option>
+              <option>MAPII</option>
+              <option>Insights and Data</option>
+            </Form.Select>
+          </Form.Group>
+          <Row className="mb-3">
+            <Form.Group as={Col} controlId="formGridCity">
+              <Form.Label>Date Submitted</Form.Label>
+              <Form.Control type="Date" placeholder="Month" />
+            </Form.Group>
+          </Row>
+          {/* <Link to="/login"> */}
+          <br></br>
+          <Button type="next" class="btn btn-primary" variant="primary">
+            Submit
+          </Button>
+          {/* </Link> */}
+        </Form>
+      </FormContainer>
     </>
   );
 }

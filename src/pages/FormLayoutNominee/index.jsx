@@ -1,9 +1,10 @@
 import { Form, Row, Col, Button } from "react-bootstrap";
 import LogoHeader from "../../components/Logo";
 import SideBar from "../../components/Sidebar";
-import { FormContainer, Title, TitleContainer } from "./NewElements";
-import "./Styling.css";
-function New() {
+import { Link } from "react-router-dom";
+import { FormContainer, Title, TitleContainer } from "./NomineeElements";
+import "./NomineeStyling.css";
+function FormLayoutNominee() {
   return (
     <>
       <LogoHeader></LogoHeader>
@@ -79,14 +80,15 @@ function New() {
               <Form.Control as="textarea" rows={3} placeholder="Enter Text" />
             </Form.Group>
           </Row>
-
-          <Button variant="primary" type="submit">
-            Next
-          </Button>
+          <Link to="/Nominator">
+            <Button type="next" class="btn btn-primary" variant="primary">
+              Next
+            </Button>
+          </Link>
         </Form>
       </FormContainer>
     </>
   );
 }
 
-export default New;
+export default FormLayoutNominee;
