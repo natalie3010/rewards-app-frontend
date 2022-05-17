@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FormLayoutNominee from "./pages/FormLayoutNominee";
 import SideBar from "./components/Sidebar";
 import Login from "./pages/Admin";
+import New from "./pages";
 
 function App() {
   return (
@@ -11,6 +12,7 @@ function App() {
       <Routes>
         <Route path="/Nominator" element={<FormLayoutNominator />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/new" element={<New />} />
         {/* <Route path="/" element={<FormLayoutNominee />} /> */}
         <Route
           path="/"
