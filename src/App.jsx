@@ -1,5 +1,5 @@
 import "./App.css";
-import FormLayoutNominator from "./pages/FormLayourNominator";
+import FormLayoutNominator from "./pages/FormLayoutNominator";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FormLayoutNominee from "./pages/FormLayoutNominee";
 import SideBar from "./components/Sidebar";
