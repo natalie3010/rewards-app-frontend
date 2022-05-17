@@ -81,7 +81,7 @@ function New() {
           </Row>
 
           <Button variant="primary" type="submit">
-            Submit
+            Next
           </Button>
         </Form>
       </FormContainer>
