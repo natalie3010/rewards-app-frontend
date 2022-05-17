@@ -17,7 +17,7 @@ text-align: center;
 `;
 
 export const FormContainer = styled.div`
-  margin: 40px;
+  margin: -7px;
   width: 50%;
   position: absolute;
   margin-left: 25%;
