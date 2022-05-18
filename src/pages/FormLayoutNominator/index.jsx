@@ -2,7 +2,12 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import LogoHeader from "../../components/Logo";
 import SideBar from "../../components/Sidebar";
 import { Link } from "react-router-dom";
-import { FormContainer, Title, TitleContainer } from "./NominatorElements";
+import {
+  FormContainer,
+  Title,
+  TitleContainer,
+  BackBtn,
+} from "./NominatorElements";
 import "./NominatorStyling.css";
 function FormLayoutNominator() {
   return (
@@ -40,10 +45,20 @@ function FormLayoutNominator() {
           </Row>
           {/* <Link to="/login"> */}
           <br></br>
-          <Button type="next" class="btn btn-primary" variant="primary">
-            Submit
-          </Button>
-          {/* </Link> */}
+          <br></br>
+          <Row className="mb-3">
+            <Button type="next" class="btn btn-primary" variant="primary">
+              Submit
+            </Button>
+            {/* </Link> */}{" "}
+            <BackBtn>
+              <Link to="/">
+                <Button type="back" class="btn btn-primary2" variant="primary">
+                  Back
+                </Button>
+              </Link>
+            </BackBtn>
+          </Row>
         </Form>
       </FormContainer>
     </>
