@@ -5,6 +5,11 @@ margin: 4% ;
 top: 5%;
 
 `;
+export const BackBtn = styled.div`
+margin-left: -87% ;
+margin-top: -3%;
+
+`;
 
 
 export const Title = styled.h1`
