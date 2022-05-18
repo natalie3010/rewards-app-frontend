@@ -2,9 +2,56 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import LogoHeader from "../../components/Logo";
 import SideBar from "../../components/Sidebar";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import { FormContainer, Title, TitleContainer } from "./NomineeElements";
 import "./NomineeStyling.css";
 function FormLayoutNominee() {
+  const [unitArray, setUnitArray] = useState([]);
+  const [capUnit, setCapUnit] = useState("");
+  const [unitID, setUnitID] = useState();
+  const [awardArray, setawardArray] = useState([]);
+  const [categoryAward, setCategoryAward] = useState("");
+  const [awardID, setAwardID] = useState();
+
+  useEffect((awardcategory) => {
+    fetch(`http://localhost:8090/v1/nominations/rewards/get`)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+
+        setUnitArray(result);
+        setUnitID(result[0]);
+        setCategoryAward(result.categoryAward);
+
+        console.log(awardArray);
+        console.log(awardArray.awardId);
+        console.log(awardArray.categoryAward);
+      });
+  }, []);
+
+  useEffect((capabilityunits) => {
+    fetch(`http://localhost:8090/v1/nominations/cap-units/get`)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+
+        setUnitArray(result);
+        setUnitID(result[0]);
+        setCapUnit(result.CapUnit);
+        console.log(unitArray);
+        console.log(unitArray.unitId);
+        console.log(unitArray.capUnit);
+      });
+  }, []);
+
+  useEffect((addingNomination) => {
+    fetch(`http://localhost:8090/v1/nominations/add-nomination/post`)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  }, []);
+
   return (
     <>
       <LogoHeader></LogoHeader>
@@ -26,7 +73,12 @@ function FormLayoutNominee() {
           </Row>
           <Form.Group className="mb-3" as={Col} controlId="formGridState">
             <Form.Label> Nominee current Capability Unit (if known)</Form.Label>
-            <Form.Select defaultValue="Choose...">
+            <Form.Select defaultValue="--Select--">
+              {/* {" "}
+              <option>{unitArray}</option>
+              {getOptionLabel} = {(option) => option["capUnit"]}
+              {getOptionValue} = {(option) => option["unitId"]}
+              {onChange}={(opt) => ClickPool(opt.unitId)} */}
               <option>--Select--</option>
               <option>MAPII</option>
               <option>Insights and Data</option>
@@ -80,11 +132,17 @@ function FormLayoutNominee() {
               <Form.Control as="textarea" rows={3} placeholder="Enter Text" />
             </Form.Group>
           </Row>
-          <Link to="/Nominator">
-            <Button type="next" class="btn btn-primary" variant="primary">
-              Next
-            </Button>
-          </Link>
+          {/* <Link to="/Nominator"> */}
+          <Button
+            href="/Nominator"
+            type="submit"
+            class="btn btn-primary"
+            variant="primary"
+          >
+            Next
+          </Button>
+
+          {/* </Link> */}
         </Form>
       </FormContainer>
     </>

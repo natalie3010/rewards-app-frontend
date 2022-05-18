@@ -2,6 +2,7 @@ import { Form, Row, Col, Button } from "react-bootstrap";
 import LogoHeader from "../../components/Logo";
 import SideBar from "../../components/Sidebar";
 import { Link } from "react-router-dom";
+import { useState, useEffect } from "react";
 import {
   FormContainer,
   Title,
@@ -10,6 +11,33 @@ import {
 } from "./NominatorElements";
 import "./NominatorStyling.css";
 function FormLayoutNominator() {
+  const [unitArray, setUnitArray] = useState([]);
+  const [capUnit, setCapUnit] = useState("");
+  const [unitID, setUnitID] = useState();
+
+  useEffect((capabilityunits) => {
+    fetch(`http://localhost:8090/v1/nominations/cap-units/get`)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+
+        setUnitArray(result);
+        setUnitID(result[0]);
+        setCapUnit(result.CapUnit);
+        console.log(unitArray);
+        console.log(unitArray.unitId);
+        console.log(unitArray.capUnit);
+      });
+  }, []);
+
+  useEffect((addingNomination) => {
+    fetch(`http://localhost:8090/v1/nominations/add-nomination/post`)
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
+  }, []);
+
   return (
     <>
       <LogoHeader></LogoHeader>
