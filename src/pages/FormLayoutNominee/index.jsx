@@ -1,10 +1,28 @@
-import { Form, Row, Col, Button } from "react-bootstrap";
+import {
+  Form,
+  Row,
+  Col,
+  Button,
+  Tooltip,
+  OverlayTrigger,
+} from "react-bootstrap";
 import LogoHeader from "../../components/Logo";
 import SideBar from "../../components/Sidebar";
 import { Link } from "react-router-dom";
-import { FormContainer, Title, TitleContainer } from "./NomineeElements";
+import {
+  FormContainer,
+  Title,
+  TitleContainer,
+  IconImg,
+} from "./NomineeElements";
+import Icon from "../../assets/i.svg";
 import "./NomineeStyling.css";
 function FormLayoutNominee() {
+  const renderTooltip = (props) => (
+    <Tooltip id="button-tooltip" {...props}>
+      Select the icons on the left to view the different categories.
+    </Tooltip>
+  );
   return (
     <>
       <LogoHeader></LogoHeader>
@@ -35,7 +53,17 @@ function FormLayoutNominee() {
 
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridState">
-              <Form.Label> Category Nominated for* </Form.Label>
+              <Form.Label>
+                {" "}
+                Category Nominated for*
+                <OverlayTrigger
+                  placement="right"
+                  delay={{ show: 250, hide: 400 }}
+                  overlay={renderTooltip}
+                >
+                  <IconImg src={Icon} />
+                </OverlayTrigger>
+              </Form.Label>
               <Form.Select defaultValue="Choose...">
                 <option>--Select--</option>
                 <option>The Alpha</option>
