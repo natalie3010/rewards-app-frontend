@@ -1,10 +1,10 @@
-import { HeaderCont, LogoLink, LogoImg } from './LogoElements';
-import Logo from '../../assets/Logo.svg';
+import { HeaderCont, LogoLink, LogoImg } from "./LogoElements";
+import Logo from "../../assets/Logo.svg";
 
 function LogoHeader() {
   return (
     <HeaderCont>
-      <LogoLink to="/home">
+      <LogoLink to="/login">
         <LogoImg src={Logo} />
       </LogoLink>
     </HeaderCont>

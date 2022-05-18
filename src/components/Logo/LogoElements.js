@@ -7,7 +7,7 @@ export const HeaderCont = styled.div`
   align-items: center;
   justify-content: right;
   width: 100%;
-  height: 80px;
+  height: 70px;
   border-bottom: 1px solid rgba(18, 171, 219, 0.25);
   z-index: 10;
 `;
