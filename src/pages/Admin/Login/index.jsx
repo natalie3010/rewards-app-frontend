@@ -8,7 +8,7 @@ function Login() {
   return (
     <>
       <LogoHeader></LogoHeader>
-      <SideBar></SideBar>
+
       <FormContainer>
         <TitleContainer>
           <Title> Login</Title>

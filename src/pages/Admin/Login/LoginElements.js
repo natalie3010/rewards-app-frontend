@@ -17,9 +17,9 @@ text-align: center;
 `;
 
 export const FormContainer = styled.div`
-  margin: -7px;
+  margin: 50px;
   width: 50%;
   position: absolute;
-  margin-left: 25%;
+  margin-left: 26%;
   
 `;

@@ -4,7 +4,7 @@ import Logo from "../../assets/Logo.svg";
 function LogoHeader() {
   return (
     <HeaderCont>
-      <LogoLink to="/new">
+      <LogoLink to="/login">
         <LogoImg src={Logo} />
       </LogoLink>
     </HeaderCont>
