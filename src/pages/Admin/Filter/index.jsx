@@ -51,29 +51,57 @@ function Filter() {
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th colSpan={2}>Nominated by</th>
+                <th colSpan={2}>Month of Nomination</th>
+                <th colSpan={3}>Nominee Details</th>
+                <th>Mail sent to Nominee</th>
+                <th>Details</th>
+              </tr>
+              <tr>
+                <th>Name</th>
+                <th>CU</th>
+                <th>Month</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>CU</th>
+                <th>Category</th>
+                <th>Yes/No</th>
+                <th>From the 250 Words Section</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
                 <td>Mark</td>
                 <td>Otto</td>
                 <td>@mdo</td>
               </tr>
               <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
               </tr>
               <tr>
-                <td>3</td>
-                <td colSpan={2}>Larry the Bird</td>
-                <td>@twitter</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
               </tr>
             </tbody>
           </Table>
