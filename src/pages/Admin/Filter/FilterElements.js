@@ -1,19 +1,15 @@
 import styled from "styled-components";
 
 export const TitleContainer = styled.div`
-margin: 4% ;
-top: 5%;
-
+  margin: 4%;
+  top: 5%;
 `;
 
-
 export const Title = styled.h1`
-color: #0070ad !important;
-font-size: 1.8rem;
-font-family: 'Ubuntu';
-text-align: center;
-
-
+  color: #0070ad !important;
+  font-size: 1.8rem;
+  font-family: "Ubuntu";
+  text-align: center;
 `;
 
 export const FormContainer = styled.div`
@@ -21,6 +17,7 @@ export const FormContainer = styled.div`
   width: 50%;
   position: absolute;
   margin-left: 26%;
-  
 `;
 
+export const TableContainer = styled.div``;
+export const DateContainer = styled.div``;

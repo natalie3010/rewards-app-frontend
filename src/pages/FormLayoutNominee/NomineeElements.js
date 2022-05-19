@@ -4,7 +4,11 @@ export const TitleContainer = styled.div`
   margin: 4%;
   top: 5%;
 `;
+export const BackBtn = styled.div`
+margin-left: -87% ;
+margin-top: -3%;
 
+`;
 export const Title = styled.h1`
   color: #0070ad !important;
   font-size: 1.8rem;
