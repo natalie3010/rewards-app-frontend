@@ -3,8 +3,16 @@ import LogoHeader from "../../components/Logo";
 import SideBar from "../../components/Sidebar";
 import { Link } from "react-router-dom";
 import { FormContainer, Title, TitleContainer } from "./NominatorElements";
+import { useNavigate } from "react-router-dom";
+
 import "./NominatorStyling.css";
 function FormLayoutNominator() {
+  const navigate = useNavigate();
+
+  function validateForm() {
+    let form = document.getElementById("#form");
+  }
+
   return (
     <>
       <LogoHeader></LogoHeader>
@@ -13,7 +21,7 @@ function FormLayoutNominator() {
         <TitleContainer>
           <Title> Your Details </Title>
         </TitleContainer>
-        <Form>
+        <Form id="form">
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridNomineeName">
               <Form.Label>Your Name</Form.Label>
@@ -40,7 +48,12 @@ function FormLayoutNominator() {
           </Row>
           {/* <Link to="/login"> */}
           <br></br>
-          <Button type="next" class="btn btn-primary" variant="primary">
+          <Button
+            onClick={navigate("/login")}
+            type="submit"
+            class="btn btn-primary"
+            variant="primary"
+          >
             Submit
           </Button>
           {/* </Link> */}
