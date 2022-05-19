@@ -46,7 +46,7 @@ function FormLayoutNominator() {
         <TitleContainer>
           <Title> Your Details </Title>
         </TitleContainer>
-        <Form>
+        <Form id="form">
           <Row className="mb-3">
             <Form.Group as={Col} controlId="formGridNomineeName">
               <Form.Label>Your Name</Form.Label>
