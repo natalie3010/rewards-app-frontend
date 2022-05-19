@@ -19,6 +19,9 @@ import {
 import Icon from "../../assets/i.svg";
 import "./NomineeStyling.css";
 
+import { apiProvider } from "../../services/api/provider";
+import axios from "axios";
+
 function FormLayoutNominee() {
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
@@ -33,58 +36,32 @@ function FormLayoutNominee() {
   const [categoryAward, setCategoryAward] = useState("");
   const [awardID, setAwardID] = useState();
 
-  //for getting award categories
-  useEffect((awardcategory) => {
-    fetch(`http://localhost:8090/v1/nominations/rewards/get`)
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
+  const apiGetUnits = apiProvider.GetAllApi("v1/nominations/cap-units");
+  const apiGetCategory = apiProvider.GetAllApi("v1/nominations/rewards");
 
-        setUnitArray(result);
-        setUnitID(result[0]);
-        setCategoryAward(result.categoryAward);
+  const form = {
+    electorName: "Tasha",
+    electorEmail: "Email2",
+    electorCapUnit: 2,
+    categoryNominated: 2,
+    nomineeName: "Juwon",
+    nomineeEmail: "daniel.b.jones@capgemini.com",
+    nomineeCapUnit: 2,
+    nominationDescription: "ooooo Test ereeee mmmmmm ",
+    sendMail: true,
+    nominationEmailMessage: "",
+  };
 
-        console.log(awardArray);
-        console.log(awardArray.awardId);
-        console.log(awardArray.categoryAward);
-      });
+  const api = apiProvider.PostApi("v1/nominations/add-nomination", form);
+  function Test() {
+    console.log("Sending submission")
+    api.request();
+  }
+
+  useEffect(() => {
+    apiGetUnits.request();
+    apiGetCategory.request();
   }, []);
-
-  //for getting capability units
-  useEffect((capabilityunits) => {
-    fetch(`http://localhost:8090/v1/nominations/cap-units/get`)
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-
-        setUnitArray(result);
-        setUnitID(result[0]);
-        setCapUnit(result.CapUnit);
-        console.log(unitArray);
-        console.log(unitArray.unitId);
-        console.log(unitArray.capUnit);
-      });
-  }, []);
-
-  //for (posting) adding Nomination
-  useEffect((addingNomination) => {
-    fetch(`http://localhost:8090/v1/nominations/add-nomination/post`)
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      });
-  }, []);
-
-  // for checkbox
-  // handleKey(e);
-  // {
-  //   let change = {};
-  //   const { value, checked, name } = e.target;
-  //   const previousKeyState = this.state[name] || {};
-  //   this.setState({
-  //     [name]: { ...previousKeyState, [name]: checked },
-  //   });
-  // }
 
   return (
     <>
@@ -108,14 +85,13 @@ function FormLayoutNominee() {
           <Form.Group className="mb-3" as={Col} controlId="formGridState">
             <Form.Label> Nominee current Capability Unit (if known)</Form.Label>
             <Form.Select defaultValue="--Select--">
-              {/* {" "}
-              <option>{unitArray}</option>
-              {getOptionLabel} = {(option) => option["capUnit"]}
-              {getOptionValue} = {(option) => option["unitId"]}
-              {onChange}={(opt) => ClickPool(opt.unitId)} */}
               <option>--Select--</option>
-              <option>MAPII</option>
-              <option>Insights and Data</option>
+
+              {apiGetUnits.data?.map((unit, i) => (
+                <option key={i} value={unit}>
+                  {unit.capabilityName}
+                </option>
+              ))}
             </Form.Select>
           </Form.Group>
 
@@ -134,16 +110,12 @@ function FormLayoutNominee() {
               </Form.Label>
               <Form.Select defaultValue="Choose...">
                 <option>--Select--</option>
-                <option>The Alpha</option>
-                <option>Shining Star</option>
-                <option>Mr./Mrs Professional</option>
-                <option>Positive Radiator</option>
-                <option>Pathfinder</option>
-                <option>Spartan Spirit Award</option>
-                <option>Community-Centered</option>
-                <option>Above and Beyond Award</option>
-                <option>Beyond Grateful Award</option>
-                <option>Placemaker</option>
+
+                {apiGetCategory.data?.map((category, i) => (
+                  <option key={i} value={category}>
+                    {category.categoryName}
+                  </option>
+                ))}
               </Form.Select>
             </Form.Group>
             <Form.Group as={Col} id="formGridCheckbox">
@@ -180,10 +152,11 @@ function FormLayoutNominee() {
           </Row>
           {/* <Link to="/Nominator"> */}
           <Button
-            href="/Nominator"
-            type="submit"
-            class="btn btn-primary"
-            variant="primary"
+            onClick={((e) => Test)}
+            // href="/Nominator"
+            // type="submit"
+            // class="btn btn-primary"
+            // variant="primary"
           >
             Next
           </Button>
