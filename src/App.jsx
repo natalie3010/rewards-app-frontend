@@ -8,7 +8,6 @@ import "./pages/Authentication/SPA/styles/index.css";
 
 import "bootstrap/dist/css/bootstrap.css";
 import Authentication from "./pages/Authentication/SPA/Authentication";
-import FormLayoutNominator from "./pages/FormLayoutNominator";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import FormLayoutNominee from "./pages/FormLayoutNominee";
 import SideBar from "./components/Sidebar";
@@ -25,7 +24,6 @@ function App() {
           path="/"
           element={<Authentication msalInstance={msalInstance} />}
         />
-        <Route path="/Nominator" element={<FormLayoutNominator />} />
         <Route path="/login" element={<Login />} />
         <Route path="/filter" element={<Filter />} />
 
