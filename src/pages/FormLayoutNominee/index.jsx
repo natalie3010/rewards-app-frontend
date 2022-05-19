@@ -20,7 +20,6 @@ import Icon from "../../assets/i.svg";
 import "./NomineeStyling.css";
 
 import { apiProvider } from "../../services/api/provider";
-import axios from "axios";
 
 function FormLayoutNominee() {
   const renderTooltip = (props) => (
@@ -29,34 +28,8 @@ function FormLayoutNominee() {
     </Tooltip>
   );
 
-  const [unitArray, setUnitArray] = useState([]);
-  const [capUnit, setCapUnit] = useState("");
-  const [unitID, setUnitID] = useState();
-  const [awardArray, setawardArray] = useState([]);
-  const [categoryAward, setCategoryAward] = useState("");
-  const [awardID, setAwardID] = useState();
-
   const apiGetUnits = apiProvider.GetAllApi("v1/nominations/cap-units");
   const apiGetCategory = apiProvider.GetAllApi("v1/nominations/rewards");
-
-  const form = {
-    electorName: "Tasha",
-    electorEmail: "Email2",
-    electorCapUnit: 2,
-    categoryNominated: 2,
-    nomineeName: "Juwon",
-    nomineeEmail: "daniel.b.jones@capgemini.com",
-    nomineeCapUnit: 2,
-    nominationDescription: "ooooo Test ereeee mmmmmm ",
-    sendMail: true,
-    nominationEmailMessage: "",
-  };
-
-  const api = apiProvider.PostApi("v1/nominations/add-nomination", form);
-  function Test() {
-    console.log("Sending submission")
-    api.request();
-  }
 
   useEffect(() => {
     apiGetUnits.request();
@@ -152,11 +125,10 @@ function FormLayoutNominee() {
           </Row>
           {/* <Link to="/Nominator"> */}
           <Button
-            onClick={((e) => Test)}
-            // href="/Nominator"
-            // type="submit"
-            // class="btn btn-primary"
-            // variant="primary"
+            href="/Nominator"
+            type="submit"
+            class="btn btn-primary"
+            variant="primary"
           >
             Next
           </Button>

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import axios from "axios";
 
 //Self-explanatory - you will only need the endpoint in your API calls
