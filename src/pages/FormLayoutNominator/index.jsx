@@ -80,7 +80,7 @@ function FormLayoutNominator() {
             </Button>
             {/* </Link> */}{" "}
             <BackBtn>
-              <Link to="/">
+              <Link to="/Nominee">
                 <Button type="back" class="btn btn-primary2" variant="primary">
                   Back
                 </Button>
