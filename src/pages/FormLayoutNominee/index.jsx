@@ -24,12 +24,22 @@ import "./NomineeStyling.css";
 import * as yup from "yup";
 import { Formik } from "formik";
 
+import { apiProvider } from "../../services/api/provider";
+
 function FormLayoutNominee() {
   const renderTooltip = (props) => (
     <Tooltip id="button-tooltip" {...props}>
       Select the icons on the left to view the different categories.
     </Tooltip>
   );
+
+  const apiGetUnits = apiProvider.GetAllApi("v1/nominations/cap-units");
+  const apiGetCategory = apiProvider.GetAllApi("v1/nominations/rewards");
+
+  useEffect(() => {
+    apiGetUnits.request();
+    apiGetCategory.request();
+  }, []);
 
   const schema = yup.object().shape({
     nomineeName: yup.string().required(),
@@ -59,8 +69,9 @@ function FormLayoutNominee() {
     }
   }
 
-  const sendData = ({ data }) => {
-    fetch;
+  const sendData = ({ values }) => {
+    console.log(values);
+    // apiProvider.PostApi("v1/nominations/add-nomination", data).request();
   };
 
   return (
@@ -132,44 +143,61 @@ function FormLayoutNominee() {
                     <Form.Label>
                       Nominee current Capability Unit (if known)
                     </Form.Label>
-                    <Form.Control
+
+                    {/* <Form.Control
                       type="text"
                       name="nomineeUnit"
                       value={values.nomineeCapUnit}
                       onChange={handleChange}
                       isValid={touched.nomineeCapUnit && !errors.nomineeCapUnit}
-                    />
-                    {/* <Form.Select defaultValue="Choose...">
-                    <option>--Select--</option>
-                    <option>MAPII</option>
-                    <option>Insights and Data</option>
-                  </Form.Select> */}
+                    /> */}
+
+                    <Form.Select
+                      type="dropdown"
+                      name="nomineeUnit"
+                      value={values.nomineeCapUnit}
+                      onChange={handleChange}
+                      isValid={touched.nomineeCapUnit && !errors.nomineeCapUnit}
+                      defaultValue="Choose..."
+                    >
+                      <option>--Select--</option>
+
+                      {apiGetUnits.data?.map((unit, i) => (
+                        <option key={i} value={unit}>
+                          {unit.capabilityName}
+                        </option>
+                      ))}
+                    </Form.Select>
                   </Form.Group>
                   <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formGridState">
+                    <Form.Group as={Col}>
                       <Form.Label> Category Nominated for* </Form.Label>
-                      <Form.Control
-                        type="text"
+                      {/* <Form.Control
                         name="categoryNominated"
                         value={values.categoryNominated}
                         onChange={handleChange}
                         isValid={
                           touched.categoryNominated && !errors.categoryNominated
                         }
-                      />
-                      {/* <Form.Select defaultValue="Choose...">
-                      <option>--Select--</option>
-                      <option>The Alpha</option>
-                      <option>Shining Star</option>
-                      <option>Mr./Mrs Professional</option>
-                      <option>Positive Radiator</option>
-                      <option>Pathfinder</option>
-                      <option>Spartan Spirit Award</option>
-                      <option>Community-Centered</option>
-                      <option>Above and Beyond Award</option>
-                      <option>Beyond Grateful Award</option>
-                      <option>Placemaker</option>
-                    </Form.Select> */}
+                      /> */}
+                      <Form.Select
+                        type="dropdown"
+                        name="categoryNominated"
+                        value={values.categoryNominated}
+                        onChange={handleChange}
+                        isValid={
+                          touched.categoryNominated && !errors.categoryNominated
+                        }
+                        defaultValue="Choose..."
+                      >
+                        <option>--Select--</option>
+
+                        {apiGetCategory.data?.map((category, i) => (
+                          <option key={i} value={category}>
+                            {category.categoryName}
+                          </option>
+                        ))}
+                      </Form.Select>
                     </Form.Group>
                     <Form.Group as={Col} id="formGridCheckbox">
                       <Form.Check
@@ -260,8 +288,12 @@ function FormLayoutNominee() {
                     <Form.Label> Your current Capability Unit</Form.Label>
                     <Form.Select defaultValue="Choose...">
                       <option>--Select--</option>
-                      <option>MAPII</option>
-                      <option>Insights and Data</option>
+
+                      {apiGetUnits.data?.map((unit, i) => (
+                        <option key={i} value={unit}>
+                          {unit.capabilityName}
+                        </option>
+                      ))}
                     </Form.Select>
                   </Form.Group>
                   <Row className="mb-3">
@@ -275,7 +307,8 @@ function FormLayoutNominee() {
                   <br></br>
                   <Row className="mb-3">
                     <Button
-                      type="next"
+                      type="submit"
+                      value="submitData"
                       class="btn btn-primary"
                       variant="primary"
                     >
