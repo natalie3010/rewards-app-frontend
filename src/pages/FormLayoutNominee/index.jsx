@@ -20,7 +20,6 @@ import Icon from "../../assets/i.svg";
 import "./NomineeStyling.css";
 import { useNavigate } from "react-router-dom";
 import "./NomineeStyling.css";
-import { useState } from "react";
 import * as yup from "yup";
 import { Formik } from "formik";
 
