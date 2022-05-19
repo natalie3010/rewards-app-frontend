@@ -7,9 +7,15 @@ import "./FilterStyling.css";
 
 function Filter() {
   return (
-    <FormContainer>
+    <>
       <LogoHeader></LogoHeader>
-    </FormContainer>
+
+      <FormContainer>
+        <TitleContainer>
+          <Title> Admin Filter</Title>
+        </TitleContainer>
+      </FormContainer>
+    </>
   );
 }
 export default Filter;

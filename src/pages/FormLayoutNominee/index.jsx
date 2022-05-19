@@ -33,6 +33,7 @@ function FormLayoutNominee() {
   const [categoryAward, setCategoryAward] = useState("");
   const [awardID, setAwardID] = useState();
 
+  //for getting award categories
   useEffect((awardcategory) => {
     fetch(`http://localhost:8090/v1/nominations/rewards/get`)
       .then((res) => res.json())
@@ -49,6 +50,7 @@ function FormLayoutNominee() {
       });
   }, []);
 
+  //for getting capability units
   useEffect((capabilityunits) => {
     fetch(`http://localhost:8090/v1/nominations/cap-units/get`)
       .then((res) => res.json())
@@ -64,6 +66,7 @@ function FormLayoutNominee() {
       });
   }, []);
 
+  //for (posting) adding Nomination
   useEffect((addingNomination) => {
     fetch(`http://localhost:8090/v1/nominations/add-nomination/post`)
       .then((res) => res.json())
@@ -71,6 +74,17 @@ function FormLayoutNominee() {
         console.log(result);
       });
   }, []);
+
+  // for checkbox
+  // handleKey(e);
+  // {
+  //   let change = {};
+  //   const { value, checked, name } = e.target;
+  //   const previousKeyState = this.state[name] || {};
+  //   this.setState({
+  //     [name]: { ...previousKeyState, [name]: checked },
+  //   });
+  // }
 
   return (
     <>
@@ -134,6 +148,8 @@ function FormLayoutNominee() {
             </Form.Group>
             <Form.Group as={Col} id="formGridCheckbox">
               <Form.Check
+                // value={this.state.key.mail}
+                // onChange={(e) => this.handleKey(e)}
                 type="checkbox"
                 label="Please tick the box if you want a mail to be sent to the
                   Candidate*"
