@@ -9,7 +9,7 @@ import {
 } from "react-bootstrap";
 import LogoHeader from "../../components/Logo";
 import SideBar from "../../components/Sidebar";
-import { Link } from "react-router-dom";
+import axios from "axios";
 import {
   FormContainer,
   Title,
@@ -69,10 +69,23 @@ function FormLayoutNominee() {
     }
   }
 
-  const sendData = ({ values }) => {
+  function sendData(values) {
+    console.log("clicked");
     console.log(values);
-    // apiProvider.PostApi("v1/nominations/add-nomination", data).request();
-  };
+    axios
+      .post(`http://localhost:8080/v1/nominations/nomination`, values, {
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+      .then((res) => {
+        console.log(res);
+        if (res) {
+          window.location.reload(false);
+        }
+      });
+  }
 
   return (
     <>
@@ -85,26 +98,23 @@ function FormLayoutNominee() {
         <Formik
           id="form"
           validationSchema={schema}
-          onSubmit={(values) => {
-            sendData(values);
-          }}
+          onSubmit={(values) => sendData(values)}
           initialValues={{
             nomineeName: "",
             nomineeEmail: "",
-            nomineeCapUnit: null,
+            nomineeCapUnit: "",
             categoryNominated: "",
             electorName: "",
             electorEmail: "",
-            electorCapUnit: null,
+            electorCapUnit: "",
             nominationDescription: "",
             nominationEmailMessage: "",
-            sendMail: true,
+            sendMail: false,
           }}
         >
           {({
             handleSubmit,
             handleChange,
-            validateForm,
             values,
             touched,
             isValid,
@@ -154,16 +164,15 @@ function FormLayoutNominee() {
 
                     <Form.Select
                       type="dropdown"
-                      name="nomineeUnit"
+                      name="nomineeCapUnit"
                       value={values.nomineeCapUnit}
                       onChange={handleChange}
                       isValid={touched.nomineeCapUnit && !errors.nomineeCapUnit}
-                      defaultValue="Choose..."
                     >
-                      <option>--Select--</option>
+                      <option defaultValue>--Select--</option>
 
                       {apiGetUnits.data?.map((unit, i) => (
-                        <option key={i} value={unit}>
+                        <option key={i} value={unit.id}>
                           {unit.capabilityName}
                         </option>
                       ))}
@@ -172,14 +181,7 @@ function FormLayoutNominee() {
                   <Row className="mb-3">
                     <Form.Group as={Col}>
                       <Form.Label> Category Nominated for* </Form.Label>
-                      {/* <Form.Control
-                        name="categoryNominated"
-                        value={values.categoryNominated}
-                        onChange={handleChange}
-                        isValid={
-                          touched.categoryNominated && !errors.categoryNominated
-                        }
-                      /> */}
+
                       <Form.Select
                         type="dropdown"
                         name="categoryNominated"
@@ -188,12 +190,11 @@ function FormLayoutNominee() {
                         isValid={
                           touched.categoryNominated && !errors.categoryNominated
                         }
-                        defaultValue="Choose..."
                       >
-                        <option>--Select--</option>
+                        <option defaultValue>--Select--</option>
 
                         {apiGetCategory.data?.map((category, i) => (
-                          <option key={i} value={category}>
+                          <option key={i} value={category.id}>
                             {category.categoryName}
                           </option>
                         ))}
@@ -202,8 +203,11 @@ function FormLayoutNominee() {
                     <Form.Group as={Col} id="formGridCheckbox">
                       <Form.Check
                         type="checkbox"
+                        name="sendMail"
+                        value={values.sendMail}
+                        onChange={handleChange}
                         label="Please tick the box if you want a mail to be sent to the
-                    Candidate*"
+                    Candidate"
                       />
                     </Form.Group>
                   </Row>
@@ -242,7 +246,6 @@ function FormLayoutNominee() {
                         body
                       </Form.Label>
                       <Form.Control
-                        valid
                         type="text"
                         name="nominationEmailMessage"
                         value={values.nominationEmailMessage}
@@ -259,7 +262,7 @@ function FormLayoutNominee() {
                   </Row>
                   <Button
                     type="button"
-                    class="btn btn-primary"
+                    className="btn btn-primary"
                     variant="primary"
                     onClick={nextStep}
                   >
@@ -273,11 +276,25 @@ function FormLayoutNominee() {
                   <Row className="mb-3">
                     <Form.Group as={Col} controlId="formGridNomineeName">
                       <Form.Label>Your Name</Form.Label>
-                      <Form.Control type="name" placeholder="Enter Name" />
+                      <Form.Control
+                        type="text"
+                        name="electorName"
+                        placeholder="Enter your name"
+                        value={values.electorName}
+                        onChange={handleChange}
+                        isValid={touched.electorName && !errors.electorName}
+                      />
                     </Form.Group>
                     <Form.Group as={Col} controlId="formGridEmail">
                       <Form.Label>Your Email</Form.Label>
-                      <Form.Control type="email" placeholder="Enter Email" />
+                      <Form.Control
+                        type="email"
+                        name="electorEmail"
+                        placeholder="Enter your email"
+                        value={values.electorEmail}
+                        onChange={handleChange}
+                        isValid={touched.electorEmail && !errors.electorEmail}
+                      />
                     </Form.Group>
                   </Row>
                   <Form.Group
@@ -286,39 +303,34 @@ function FormLayoutNominee() {
                     controlId="formGridState"
                   >
                     <Form.Label> Your current Capability Unit</Form.Label>
-                    <Form.Select defaultValue="Choose...">
-                      <option>--Select--</option>
+                    <Form.Select
+                      type="dropdown"
+                      name="electorCapUnit"
+                      value={values.electorCapUnit}
+                      onChange={handleChange}
+                      isValid={touched.electorCapUnit && !errors.electorCapUnit}
+                    >
+                      <option defaultValue>--Select--</option>
 
                       {apiGetUnits.data?.map((unit, i) => (
-                        <option key={i} value={unit}>
+                        <option key={i} value={unit.id}>
                           {unit.capabilityName}
                         </option>
                       ))}
                     </Form.Select>
                   </Form.Group>
-                  <Row className="mb-3">
-                    <Form.Group as={Col} controlId="formGridCity">
-                      <Form.Label>Date Submitted</Form.Label>
-                      <Form.Control type="Date" placeholder="Month" />
-                    </Form.Group>
-                  </Row>
-                  {/* <Link to="/login"> */}
+
                   <br></br>
                   <br></br>
                   <Row className="mb-3">
-                    <Button
-                      type="submit"
-                      value="submitData"
-                      class="btn btn-primary"
-                      variant="primary"
-                    >
+                    <Button type="submit" className="btn btn-primary">
                       Submit
                     </Button>
                     {/* </Link> */}{" "}
                     <BackBtn>
                       <Button
                         type="back"
-                        class="btn btn-primary2"
+                        className="btn btn-primary2"
                         variant="primary"
                         onClick={prevStep}
                       >
