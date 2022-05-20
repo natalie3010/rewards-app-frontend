@@ -13,8 +13,41 @@ import {
   Dates2,
 } from "./FilterElements";
 import "./FilterStyling.css";
+import { useState } from "react";
+import axios from "axios";
 
 function Filter() {
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  function downloadSpreadsheet(startDate, endDate) {
+    const URL = `http://localhost:8080/v1/nominations/spreadsheet/${startDate}/${endDate}`;
+  }
+  axios
+    .get(URL, {
+      responseType: "blob",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+    .then((res) => {
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+
+      const link = document.createElement("a");
+
+      link.href = url;
+
+      link.setAttribute("download", `output.zip`);
+
+      document.body.appendChild(link);
+
+      link.click();
+
+      link.parentNode.removeChild(link);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
   return (
     <>
       <LogoHeader></LogoHeader>
@@ -28,12 +61,15 @@ function Filter() {
             <div className="date1">
               <div className="row">
                 <div className="col-md-4">
-                  <Form.Group controlId="dob">
+                  <Form.Group controlId="startDate">
                     <Form.Label>Start Date</Form.Label>
                     <Form.Control
                       type="date"
-                      name="dob"
-                      placeholder="Date of Birth"
+                      name="start"
+                      placeholder="Start Date"
+                      onChange={(e) => {
+                        setStartDate(e.target.value);
+                      }}
                     />
                   </Form.Group>
                 </div>
@@ -45,12 +81,15 @@ function Filter() {
               <div className="date2">
                 <div className="row">
                   <div className="col-md-4">
-                    <Form.Group controlId="dob">
+                    <Form.Group controlId="endDate">
                       <Form.Label>End Date</Form.Label>
                       <Form.Control
                         type="date"
-                        name="dob"
-                        placeholder="Date of Birth"
+                        name="end"
+                        placeholder="End Date"
+                        onChange={(e) => {
+                          setEndDate(e.target.value);
+                        }}
                       />
                     </Form.Group>
                   </div>
@@ -58,7 +97,14 @@ function Filter() {
               </div>
             </Dates>
           </Dates2>
-          <Button variant="light">Download</Button>
+          <Button
+            variant="light"
+            onClick={() => {
+              console.log(startDate, endDate);
+            }}
+          >
+            Download
+          </Button>
         </DateContainer>
         {/* <TableContainer>
           <Table striped bordered hover>
