@@ -1,5 +1,4 @@
 import { Form, Row, Col, Button, Table } from "react-bootstrap";
-
 import LogoHeader from "../../../components/Logo";
 import SideBar from "../../../components/Sidebar";
 import { Link } from "react-router-dom";
@@ -21,40 +20,41 @@ function Filter() {
   const [endDate, setEndDate] = useState("");
   function downloadSpreadsheet(startDate, endDate) {
     const URL = `http://localhost:8080/v1/nominations/spreadsheet/${startDate}/${endDate}`;
+
+    axios
+      .get(URL, {
+        responseType: "blob",
+        headers: {
+          "Content-Type": "application/json",
+          "Access-Control-Allow-Origin": "*",
+        },
+      })
+      .then((res) => {
+        const url = window.URL.createObjectURL(new Blob([res.data]));
+
+        const link = document.createElement("a");
+
+        link.href = url;
+
+        link.setAttribute("download", `nominations.xlsx`);
+
+        document.body.appendChild(link);
+
+        link.click();
+
+        link.parentNode.removeChild(link);
+      })
+      .catch((err) => {
+        console.error(err);
+      });
   }
-  axios
-    .get(URL, {
-      responseType: "blob",
-      headers: {
-        "Content-Type": "application/json",
-        "Access-Control-Allow-Origin": "*",
-      },
-    })
-    .then((res) => {
-      const url = window.URL.createObjectURL(new Blob([res.data]));
-
-      const link = document.createElement("a");
-
-      link.href = url;
-
-      link.setAttribute("download", `output.zip`);
-
-      document.body.appendChild(link);
-
-      link.click();
-
-      link.parentNode.removeChild(link);
-    })
-    .catch((err) => {
-      console.error(err);
-    });
   return (
     <>
       <LogoHeader></LogoHeader>
 
       <FormContainer>
         <TitleContainer>
-          <Title> Admin Filter</Title>
+          <Title>Download Nominations</Title>
         </TitleContainer>
         <DateContainer>
           <Dates>
@@ -101,9 +101,13 @@ function Filter() {
             variant="light"
             onClick={() => {
               console.log(startDate, endDate);
+              downloadSpreadsheet(startDate, endDate);
             }}
           >
             Download
+          </Button>
+          <Button variant="dark" href="/nominee">
+            Add Nomination
           </Button>
         </DateContainer>
         {/* <TableContainer>
