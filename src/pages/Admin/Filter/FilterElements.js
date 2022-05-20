@@ -20,4 +20,14 @@ export const FormContainer = styled.div`
 `;
 
 export const TableContainer = styled.div``;
-export const DateContainer = styled.div``;
+export const DateContainer = styled.div`
+  :after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+`;
+export const Dates = styled.div`
+  float: left;
+  width: 50%;
+`;

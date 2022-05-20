@@ -1,4 +1,5 @@
 import { Form, Row, Col, Button, Table } from "react-bootstrap";
+
 import LogoHeader from "../../../components/Logo";
 import SideBar from "../../../components/Sidebar";
 import { Link } from "react-router-dom";
@@ -7,6 +8,8 @@ import {
   Title,
   TitleContainer,
   TableContainer,
+  DateContainer,
+  Dates,
 } from "./FilterElements";
 import "./FilterStyling.css";
 
@@ -19,34 +22,40 @@ function Filter() {
         <TitleContainer>
           <Title> Admin Filter</Title>
         </TitleContainer>
-        <div>
-          <div className="row">
-            <div className="col-md-4">
-              <Form.Group controlId="dob">
-                <Form.Label>Select Date</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="dob"
-                  placeholder="Date of Birth"
-                />
-              </Form.Group>
+        <DateContainer>
+          <Dates>
+            <div>
+              <div className="row">
+                <div className="col-md-4">
+                  <Form.Group controlId="dob">
+                    <Form.Label>Select Date</Form.Label>
+                    <Form.Control
+                      type="date"
+                      name="dob"
+                      placeholder="Date of Birth"
+                    />
+                  </Form.Group>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div>
-          <div className="row">
-            <div className="col-md-4">
-              <Form.Group controlId="dob">
-                <Form.Label>Select Date</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="dob"
-                  placeholder="Date of Birth"
-                />
-              </Form.Group>
+          </Dates>
+          <Dates>
+            <div>
+              <div className="row">
+                <div className="col-md-4">
+                  <Form.Group controlId="dob">
+                    <Form.Label>Select Date</Form.Label>
+                    <Form.Control
+                      type="date"
+                      name="dob"
+                      placeholder="Date of Birth"
+                    />
+                  </Form.Group>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
+          </Dates>
+        </DateContainer>
         <TableContainer>
           <Table striped bordered hover>
             <thead>
