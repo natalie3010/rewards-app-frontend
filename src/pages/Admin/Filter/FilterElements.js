@@ -20,4 +20,12 @@ export const FormContainer = styled.div`
 `;
 
 export const TableContainer = styled.div``;
-export const DateContainer = styled.div``;
+export const DateContainer = styled.div`
+  position: absolute;
+  left: 35%;
+  width: 100%;
+`;
+export const Dates = styled.div``;
+export const Dates2 = styled.div`
+  /* margin-left: 25%; */
+`;

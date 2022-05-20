@@ -1,4 +1,5 @@
 import { Form, Row, Col, Button, Table } from "react-bootstrap";
+
 import LogoHeader from "../../../components/Logo";
 import SideBar from "../../../components/Sidebar";
 import { Link } from "react-router-dom";
@@ -7,10 +8,46 @@ import {
   Title,
   TitleContainer,
   TableContainer,
+  DateContainer,
+  Dates,
+  Dates2,
 } from "./FilterElements";
 import "./FilterStyling.css";
+import { useState } from "react";
+import axios from "axios";
 
 function Filter() {
+  const [startDate, setStartDate] = useState("");
+  const [endDate, setEndDate] = useState("");
+  function downloadSpreadsheet(startDate, endDate) {
+    const URL = `http://localhost:8080/v1/nominations/spreadsheet/${startDate}/${endDate}`;
+  }
+  axios
+    .get(URL, {
+      responseType: "blob",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    })
+    .then((res) => {
+      const url = window.URL.createObjectURL(new Blob([res.data]));
+
+      const link = document.createElement("a");
+
+      link.href = url;
+
+      link.setAttribute("download", `output.zip`);
+
+      document.body.appendChild(link);
+
+      link.click();
+
+      link.parentNode.removeChild(link);
+    })
+    .catch((err) => {
+      console.error(err);
+    });
   return (
     <>
       <LogoHeader></LogoHeader>
@@ -19,66 +56,115 @@ function Filter() {
         <TitleContainer>
           <Title> Admin Filter</Title>
         </TitleContainer>
-        <div>
-          <div className="row">
-            <div className="col-md-4">
-              <Form.Group controlId="dob">
-                <Form.Label>Select Date</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="dob"
-                  placeholder="Date of Birth"
-                />
-              </Form.Group>
+        <DateContainer>
+          <Dates>
+            <div className="date1">
+              <div className="row">
+                <div className="col-md-4">
+                  <Form.Group controlId="startDate">
+                    <Form.Label>Start Date</Form.Label>
+                    <Form.Control
+                      type="date"
+                      name="start"
+                      placeholder="Start Date"
+                      onChange={(e) => {
+                        setStartDate(e.target.value);
+                      }}
+                    />
+                  </Form.Group>
+                </div>
+              </div>
             </div>
-          </div>
-        </div>
-        <div>
-          <div className="row">
-            <div className="col-md-4">
-              <Form.Group controlId="dob">
-                <Form.Label>Select Date</Form.Label>
-                <Form.Control
-                  type="date"
-                  name="dob"
-                  placeholder="Date of Birth"
-                />
-              </Form.Group>
-            </div>
-          </div>
-        </div>
-        <TableContainer>
+          </Dates>
+          <Dates2>
+            <Dates>
+              <div className="date2">
+                <div className="row">
+                  <div className="col-md-4">
+                    <Form.Group controlId="endDate">
+                      <Form.Label>End Date</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="end"
+                        placeholder="End Date"
+                        onChange={(e) => {
+                          setEndDate(e.target.value);
+                        }}
+                      />
+                    </Form.Group>
+                  </div>
+                </div>
+              </div>
+            </Dates>
+          </Dates2>
+          <Button
+            variant="light"
+            onClick={() => {
+              console.log(startDate, endDate);
+            }}
+          >
+            Download
+          </Button>
+        </DateContainer>
+        {/* <TableContainer>
           <Table striped bordered hover>
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th colSpan={2}>Nominated by</th>
+                <th colSpan={2}>Month of Nomination</th>
+                <th colSpan={3}>Nominee Details</th>
+                <th>Mail sent to Nominee</th>
+                <th>Details</th>
+              </tr>
+              <tr>
+                <th>Name</th>
+                <th>CU</th>
+                <th>Month</th>
+                <th>Date</th>
+                <th>Name</th>
+                <th>CU</th>
+                <th>Category</th>
+                <th>Yes/No</th>
+                <th>From the 250 Words Section</th>
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>1</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
                 <td>Mark</td>
                 <td>Otto</td>
                 <td>@mdo</td>
               </tr>
               <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
               </tr>
               <tr>
-                <td>3</td>
-                <td colSpan={2}>Larry the Bird</td>
-                <td>@twitter</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
+                <td>Mark</td>
+                <td>Otto</td>
+                <td>@mdo</td>
               </tr>
             </tbody>
-          </Table>
-          <Button variant="light">Download</Button>
-        </TableContainer>
+          </Table> 
+  </TableContainer>*/}
       </FormContainer>
     </>
   );
