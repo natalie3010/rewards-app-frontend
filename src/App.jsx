@@ -27,10 +27,7 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/filter" element={<Filter />} />
 
-        {/* <Route path="/" element={<FormLayoutNominee />} /> */}
-        <Route
-          path="/Nominee"
-          element={
+        <Route path="/Nominee" element={
             <>
               <FormLayoutNominee />
             </>
