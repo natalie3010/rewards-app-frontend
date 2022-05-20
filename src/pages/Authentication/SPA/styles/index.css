@@ -1,0 +1,49 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.navbar-brand {
+  color: rgb(255, 255, 255) !important;
+  font-size: 1.9rem !important;
+  font-family: "Ubuntu";
+  font-weight: 500;
+}
+
+.ml-auto {
+  margin-left: 5% !important;
+  font-size: 1.3rem !important;
+}
+.ml2-auto {
+  background: #12abdb !important;
+  margin-left: 5% !important;
+  font-size: 1.3rem !important;
+}
+
+.title {
+  font-size: 1.8rem !important;
+  margin-top: 7%;
+  color: #0070ad !important;
+  font-family: "Ubuntu" !important;
+}
+
+.title2 {
+  margin-top: 5%;
+  font-size: 1.8rem !important;
+}
+
+.Rewards {
+  font-size: 1.9rem !important;
+  margin-top: 1% !important;
+  color: #09547d !important;
+  font-style: oblique !important;
+}

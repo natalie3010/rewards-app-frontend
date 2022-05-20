@@ -15,9 +15,16 @@ import {
   Title,
   TitleContainer,
   IconImg,
+  BackBtn,
 } from "./NomineeElements";
 import Icon from "../../assets/i.svg";
 import "./NomineeStyling.css";
+import { useNavigate } from "react-router-dom";
+import "./NomineeStyling.css";
+import * as yup from "yup";
+import { Formik } from "formik";
+
+import { apiProvider } from "../../services/api/provider";
 
 function FormLayoutNominee() {
   const renderTooltip = (props) => (
@@ -26,65 +33,46 @@ function FormLayoutNominee() {
     </Tooltip>
   );
 
-  const [unitArray, setUnitArray] = useState([]);
-  const [capUnit, setCapUnit] = useState("");
-  const [unitID, setUnitID] = useState();
-  const [awardArray, setawardArray] = useState([]);
-  const [categoryAward, setCategoryAward] = useState("");
-  const [awardID, setAwardID] = useState();
+  const apiGetUnits = apiProvider.GetAllApi("v1/nominations/cap-units");
+  const apiGetCategory = apiProvider.GetAllApi("v1/nominations/rewards");
 
-  //for getting award categories
-  useEffect((awardcategory) => {
-    fetch(`http://localhost:8090/v1/nominations/rewards/get`)
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-
-        setUnitArray(result);
-        setUnitID(result[0]);
-        setCategoryAward(result.categoryAward);
-
-        console.log(awardArray);
-        console.log(awardArray.awardId);
-        console.log(awardArray.categoryAward);
-      });
+  useEffect(() => {
+    apiGetUnits.request();
+    apiGetCategory.request();
   }, []);
 
-  //for getting capability units
-  useEffect((capabilityunits) => {
-    fetch(`http://localhost:8090/v1/nominations/cap-units/get`)
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
+  const schema = yup.object().shape({
+    nomineeName: yup.string().required(),
+    nomineeEmail: yup.string().email().required(),
+    nomineeCapUnit: yup.number().required(),
+    categoryNominated: yup.string().required(),
+    electorName: yup.string().required(),
+    electorEmail: yup.string().email().required(),
+    electorCapUnit: yup.number().required(),
+    nominationDescription: yup.string().required(),
+    nominationEmailMessage: yup.string().required(),
+    sendMail: yup.bool(),
+  });
 
-        setUnitArray(result);
-        setUnitID(result[0]);
-        setCapUnit(result.CapUnit);
-        console.log(unitArray);
-        console.log(unitArray.unitId);
-        console.log(unitArray.capUnit);
-      });
-  }, []);
+  const navigate = useNavigate();
+  const [step, setStep] = useState(0);
 
-  //for (posting) adding Nomination
-  useEffect((addingNomination) => {
-    fetch(`http://localhost:8090/v1/nominations/add-nomination/post`)
-      .then((res) => res.json())
-      .then((result) => {
-        console.log(result);
-      });
-  }, []);
+  function nextStep() {
+    if (step < 1) {
+      setStep(step + 1);
+    }
+  }
 
-  // for checkbox
-  // handleKey(e);
-  // {
-  //   let change = {};
-  //   const { value, checked, name } = e.target;
-  //   const previousKeyState = this.state[name] || {};
-  //   this.setState({
-  //     [name]: { ...previousKeyState, [name]: checked },
-  //   });
-  // }
+  function prevStep() {
+    if (step > 0) {
+      setStep(step - 1);
+    }
+  }
+
+  const sendData = ({ values }) => {
+    console.log(values);
+    // apiProvider.PostApi("v1/nominations/add-nomination", data).request();
+  };
 
   return (
     <>
@@ -92,107 +80,259 @@ function FormLayoutNominee() {
       <SideBar></SideBar>
       <FormContainer>
         <TitleContainer>
-          <Title> Nominee Details </Title>
+          <Title> {step === 0 ? "Nominee Details" : "Your Details"} </Title>
         </TitleContainer>
-        <Form>
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridNomineeName">
-              <Form.Label>Nominee Name</Form.Label>
-              <Form.Control type="name" placeholder="Enter Name" />
-            </Form.Group>
-            <Form.Group as={Col} controlId="formGridEmail">
-              <Form.Label>Nominee Email</Form.Label>
-              <Form.Control type="email" placeholder="Enter Email" />
-            </Form.Group>
-          </Row>
-          <Form.Group className="mb-3" as={Col} controlId="formGridState">
-            <Form.Label> Nominee current Capability Unit (if known)</Form.Label>
-            <Form.Select defaultValue="--Select--">
-              {/* {" "}
-              <option>{unitArray}</option>
-              {getOptionLabel} = {(option) => option["capUnit"]}
-              {getOptionValue} = {(option) => option["unitId"]}
-              {onChange}={(opt) => ClickPool(opt.unitId)} */}
-              <option>--Select--</option>
-              <option>MAPII</option>
-              <option>Insights and Data</option>
-            </Form.Select>
-          </Form.Group>
+        <Formik
+          id="form"
+          validationSchema={schema}
+          onSubmit={(values) => {
+            sendData(values);
+          }}
+          initialValues={{
+            nomineeName: "",
+            nomineeEmail: "",
+            nomineeCapUnit: null,
+            categoryNominated: "",
+            electorName: "",
+            electorEmail: "",
+            electorCapUnit: null,
+            nominationDescription: "",
+            nominationEmailMessage: "",
+            sendMail: true,
+          }}
+        >
+          {({
+            handleSubmit,
+            handleChange,
+            validateForm,
+            values,
+            touched,
+            isValid,
+            errors,
+          }) => (
+            <Form onSubmit={handleSubmit}>
+              {step === 0 && (
+                <>
+                  <Row className="mb-3">
+                    <Form.Group as={Col} controlId="formGridNomineeName">
+                      <Form.Label>Nominee Name*</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="nomineeName"
+                        value={values.nomineeName}
+                        onChange={handleChange}
+                        isValid={touched.nomineeName && !errors.nomineeName}
+                      />
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                      <Form.Label>Nominee Email*</Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="nomineeEmail"
+                        value={values.nomineeEmail}
+                        onChange={handleChange}
+                        isValid={touched.nomineeEmail && !errors.nomineeEmail}
+                      />
+                    </Form.Group>
+                  </Row>
+                  <Form.Group
+                    className="mb-3"
+                    as={Col}
+                    controlId="formGridState"
+                  >
+                    <Form.Label>
+                      Nominee current Capability Unit (if known)
+                    </Form.Label>
 
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="formGridState">
-              <Form.Label>
-                {" "}
-                Category Nominated for*
-                <OverlayTrigger
-                  placement="right"
-                  delay={{ show: 250, hide: 400 }}
-                  overlay={renderTooltip}
-                >
-                  <IconImg src={Icon} />
-                </OverlayTrigger>
-              </Form.Label>
-              <Form.Select defaultValue="Choose...">
-                <option>--Select--</option>
-                <option>The Alpha</option>
-                <option>Shining Star</option>
-                <option>Mr./Mrs Professional</option>
-                <option>Positive Radiator</option>
-                <option>Pathfinder</option>
-                <option>Spartan Spirit Award</option>
-                <option>Community-Centered</option>
-                <option>Above and Beyond Award</option>
-                <option>Beyond Grateful Award</option>
-                <option>Placemaker</option>
-              </Form.Select>
-            </Form.Group>
-            <Form.Group as={Col} id="formGridCheckbox">
-              <Form.Check
-                // value={this.state.key.mail}
-                // onChange={(e) => this.handleKey(e)}
-                type="checkbox"
-                label="Please tick the box if you want a mail to be sent to the
-                  Candidate*"
-              />
-            </Form.Group>
-          </Row>
-          <Row className="mb-3">
-            <Form.Group as={Col} controlId="exampleForm.ControlTextarea1">
-              <Form.Label>
-                {" "}
-                Please tell us how you feel the nominee met the criteria for the
-                award that relates to the category :*
-              </Form.Label>
-              <Form.Control as="textarea" rows={3} placeholder="Enter Text" />
-            </Form.Group>
+                    {/* <Form.Control
+                      type="text"
+                      name="nomineeUnit"
+                      value={values.nomineeCapUnit}
+                      onChange={handleChange}
+                      isValid={touched.nomineeCapUnit && !errors.nomineeCapUnit}
+                    /> */}
 
-            <Form.Group
-              as={Col}
-              className="mb-3"
-              controlId="exampleForm.ControlTextarea2"
-            >
-              <br></br>
-              <Form.Label>
-                Any additional message you would want to add in the mail body
-              </Form.Label>
-              <Form.Control as="textarea" rows={3} placeholder="Enter Text" />
-            </Form.Group>
-          </Row>
-          {/* <Link to="/Nominator"> */}
-          <Button
-            href="/Nominator"
-            type="submit"
-            class="btn btn-primary"
-            variant="primary"
-          >
-            Next
-          </Button>
+                    <Form.Select
+                      type="dropdown"
+                      name="nomineeUnit"
+                      value={values.nomineeCapUnit}
+                      onChange={handleChange}
+                      isValid={touched.nomineeCapUnit && !errors.nomineeCapUnit}
+                      defaultValue="Choose..."
+                    >
+                      <option>--Select--</option>
 
-          {/* </Link> */}
-        </Form>
+                      {apiGetUnits.data?.map((unit, i) => (
+                        <option key={i} value={unit}>
+                          {unit.capabilityName}
+                        </option>
+                      ))}
+                    </Form.Select>
+                  </Form.Group>
+                  <Row className="mb-3">
+                    <Form.Group as={Col}>
+                      <Form.Label> Category Nominated for* </Form.Label>
+                      {/* <Form.Control
+                        name="categoryNominated"
+                        value={values.categoryNominated}
+                        onChange={handleChange}
+                        isValid={
+                          touched.categoryNominated && !errors.categoryNominated
+                        }
+                      /> */}
+                      <Form.Select
+                        type="dropdown"
+                        name="categoryNominated"
+                        value={values.categoryNominated}
+                        onChange={handleChange}
+                        isValid={
+                          touched.categoryNominated && !errors.categoryNominated
+                        }
+                        defaultValue="Choose..."
+                      >
+                        <option>--Select--</option>
+
+                        {apiGetCategory.data?.map((category, i) => (
+                          <option key={i} value={category}>
+                            {category.categoryName}
+                          </option>
+                        ))}
+                      </Form.Select>
+                    </Form.Group>
+                    <Form.Group as={Col} id="formGridCheckbox">
+                      <Form.Check
+                        type="checkbox"
+                        label="Please tick the box if you want a mail to be sent to the
+                    Candidate*"
+                      />
+                    </Form.Group>
+                  </Row>
+                  <Row className="mb-3">
+                    <Form.Group
+                      as={Col}
+                      controlId="exampleForm.ControlTextarea1"
+                    >
+                      <Form.Label>
+                        {" "}
+                        Please tell us how you feel the nominee met the criteria
+                        for the award that relates to the category :*
+                      </Form.Label>
+                      <Form.Control
+                        type="text"
+                        name="nominationDescription"
+                        value={values.nominationDescription}
+                        onChange={handleChange}
+                        isValid={
+                          touched.nominationDescription &&
+                          !errors.nominationDescription
+                        }
+                        as="textarea"
+                        rows={3}
+                        placeholder="Enter Text"
+                      />
+                    </Form.Group>
+                    <Form.Group
+                      as={Col}
+                      className="mb-3"
+                      controlId="exampleForm.ControlTextarea2"
+                    >
+                      <br></br>
+                      <Form.Label>
+                        Any additional message you would want to add in the mail
+                        body
+                      </Form.Label>
+                      <Form.Control
+                        valid
+                        type="text"
+                        name="nominationEmailMessage"
+                        value={values.nominationEmailMessage}
+                        onChange={handleChange}
+                        isValid={
+                          touched.nominationEmailMessage &&
+                          !errors.nominationEmailMessage
+                        }
+                        as="textarea"
+                        rows={3}
+                        placeholder="Enter Text"
+                      />
+                    </Form.Group>
+                  </Row>
+                  <Button
+                    type="button"
+                    class="btn btn-primary"
+                    variant="primary"
+                    onClick={nextStep}
+                  >
+                    Next
+                  </Button>
+                </>
+              )}
+
+              {step === 1 && (
+                <>
+                  <Row className="mb-3">
+                    <Form.Group as={Col} controlId="formGridNomineeName">
+                      <Form.Label>Your Name</Form.Label>
+                      <Form.Control type="name" placeholder="Enter Name" />
+                    </Form.Group>
+                    <Form.Group as={Col} controlId="formGridEmail">
+                      <Form.Label>Your Email</Form.Label>
+                      <Form.Control type="email" placeholder="Enter Email" />
+                    </Form.Group>
+                  </Row>
+                  <Form.Group
+                    className="mb-3"
+                    as={Col}
+                    controlId="formGridState"
+                  >
+                    <Form.Label> Your current Capability Unit</Form.Label>
+                    <Form.Select defaultValue="Choose...">
+                      <option>--Select--</option>
+
+                      {apiGetUnits.data?.map((unit, i) => (
+                        <option key={i} value={unit}>
+                          {unit.capabilityName}
+                        </option>
+                      ))}
+                    </Form.Select>
+                  </Form.Group>
+                  <Row className="mb-3">
+                    <Form.Group as={Col} controlId="formGridCity">
+                      <Form.Label>Date Submitted</Form.Label>
+                      <Form.Control type="Date" placeholder="Month" />
+                    </Form.Group>
+                  </Row>
+                  {/* <Link to="/login"> */}
+                  <br></br>
+                  <br></br>
+                  <Row className="mb-3">
+                    <Button
+                      type="submit"
+                      value="submitData"
+                      class="btn btn-primary"
+                      variant="primary"
+                    >
+                      Submit
+                    </Button>
+                    {/* </Link> */}{" "}
+                    <BackBtn>
+                      <Button
+                        type="back"
+                        class="btn btn-primary2"
+                        variant="primary"
+                        onClick={prevStep}
+                      >
+                        Back
+                      </Button>
+                    </BackBtn>
+                  </Row>
+                </>
+              )}
+            </Form>
+          )}
+        </Formik>
       </FormContainer>
     </>
   );
 }
-
 export default FormLayoutNominee;
