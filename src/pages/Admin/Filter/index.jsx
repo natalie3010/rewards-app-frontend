@@ -10,6 +10,7 @@ import {
   TableContainer,
   DateContainer,
   Dates,
+  Dates2,
 } from "./FilterElements";
 import "./FilterStyling.css";
 
@@ -24,7 +25,7 @@ function Filter() {
         </TitleContainer>
         <DateContainer>
           <Dates>
-            <div>
+            <div className="date1">
               <div className="row">
                 <div className="col-md-4">
                   <Form.Group controlId="dob">
@@ -39,24 +40,27 @@ function Filter() {
               </div>
             </div>
           </Dates>
-          <Dates>
-            <div>
-              <div className="row">
-                <div className="col-md-4">
-                  <Form.Group controlId="dob">
-                    <Form.Label>Select Date</Form.Label>
-                    <Form.Control
-                      type="date"
-                      name="dob"
-                      placeholder="Date of Birth"
-                    />
-                  </Form.Group>
+          <Dates2>
+            <Dates>
+              <div className="date2">
+                <div className="row">
+                  <div className="col-md-4">
+                    <Form.Group controlId="dob">
+                      <Form.Label>Select Date</Form.Label>
+                      <Form.Control
+                        type="date"
+                        name="dob"
+                        placeholder="Date of Birth"
+                      />
+                    </Form.Group>
+                  </div>
                 </div>
               </div>
-            </div>
-          </Dates>
+            </Dates>
+          </Dates2>
+          <Button variant="light">Download</Button>
         </DateContainer>
-        <TableContainer>
+        {/* <TableContainer>
           <Table striped bordered hover>
             <thead>
               <tr>
@@ -113,9 +117,8 @@ function Filter() {
                 <td>@mdo</td>
               </tr>
             </tbody>
-          </Table>
-          <Button variant="light">Download</Button>
-        </TableContainer>
+          </Table> 
+  </TableContainer>*/}
       </FormContainer>
     </>
   );
