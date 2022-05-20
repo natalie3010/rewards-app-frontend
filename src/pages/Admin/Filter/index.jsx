@@ -29,7 +29,7 @@ function Filter() {
               <div className="row">
                 <div className="col-md-4">
                   <Form.Group controlId="dob">
-                    <Form.Label>Select Date</Form.Label>
+                    <Form.Label>Start Date</Form.Label>
                     <Form.Control
                       type="date"
                       name="dob"
@@ -46,7 +46,7 @@ function Filter() {
                 <div className="row">
                   <div className="col-md-4">
                     <Form.Group controlId="dob">
-                      <Form.Label>Select Date</Form.Label>
+                      <Form.Label>End Date</Form.Label>
                       <Form.Control
                         type="date"
                         name="dob"
