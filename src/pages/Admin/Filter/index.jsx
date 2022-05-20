@@ -106,6 +106,9 @@ function Filter() {
           >
             Download
           </Button>
+          <Button variant="dark" href="/nominee">
+            Add Nomination
+          </Button>
         </DateContainer>
         {/* <TableContainer>
           <Table striped bordered hover>
