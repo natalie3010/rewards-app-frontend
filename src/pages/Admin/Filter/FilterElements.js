@@ -4,11 +4,7 @@ export const TitleContainer = styled.div`
   margin: 4%;
   top: 5%;
 `;
-export const BackBtn = styled.div`
-margin-left: -87% ;
-margin-top: -3%;
 
-`;
 export const Title = styled.h1`
   color: #0070ad !important;
   font-size: 1.8rem;
@@ -17,13 +13,19 @@ export const Title = styled.h1`
 `;
 
 export const FormContainer = styled.div`
-  margin: -7px;
+  margin: 50px;
   width: 50%;
   position: absolute;
-  margin-left: 25%;
+  margin-left: 26%;
 `;
 
-export const IconImg = styled.img`
-  width: 16px;
-  height: 16spx;
+export const TableContainer = styled.div``;
+export const DateContainer = styled.div`
+  position: absolute;
+  left: 35%;
+  width: 100%;
+`;
+export const Dates = styled.div``;
+export const Dates2 = styled.div`
+  /* margin-left: 25%; */
 `;

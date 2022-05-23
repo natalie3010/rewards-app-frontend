@@ -1,0 +1,14 @@
+.logo {
+  animation: fade-in-down 2s ease forwards;
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px) translateY(-50%) translateX(-50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) translateY(-50%) translateX(-50%);
+  }
+}

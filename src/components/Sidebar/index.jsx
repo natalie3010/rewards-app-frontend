@@ -99,21 +99,21 @@ function SideBar() {
         <NavCont>
           <NavUL>
             <NavLi>
-              <NavButton to="/">
+              <NavButton>
                 <IconSpan />
                 <IconImg src={AlphaIcon} />
                 <NavButtonH2 onClick={alphaHandleShow}>The Alpha</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
-              <NavButton to="/">
+              <NavButton>
                 <IconSpan />
                 <IconImg src={ShiningStarIcon} />
                 <NavButtonH2 onClick={starHandleShow}>Shining Star</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
-              <NavButton to="/">
+              <NavButton>
                 <IconSpan />
                 <IconImg src={ProfessionalIcon} />
                 <NavButtonH2 onClick={profHandleShow}>
@@ -122,7 +122,7 @@ function SideBar() {
               </NavButton>
             </NavLi>
             <NavLi>
-              <NavButton to="/">
+              <NavButton>
                 <IconSpan />
                 <IconImg src={PositiveRadiatorIcon} />
                 <NavButtonH2 onClick={posHandleShow}>
@@ -131,14 +131,14 @@ function SideBar() {
               </NavButton>
             </NavLi>
             <NavLi>
-              <NavButton to="/">
+              <NavButton>
                 <IconSpan />
                 <IconImg src={PathFinderIcon} />
                 <NavButtonH2 onClick={pathHandleShow}>Path Finder</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
-              <NavButton to="/">
+              <NavButton>
                 <IconSpan />
                 <IconImg src={SpartanSpiritIcon} />
                 <NavButtonH2 onClick={sparHandleShow}>
@@ -147,7 +147,7 @@ function SideBar() {
               </NavButton>
             </NavLi>
             <NavLi>
-              <NavButton to="/">
+              <NavButton>
                 <IconSpan />
                 <IconImg src={CommunityIcon} />
                 <NavButtonH2 onClick={comHandleShow}>
@@ -156,7 +156,7 @@ function SideBar() {
               </NavButton>
             </NavLi>
             <NavLi>
-              <NavButton to="/">
+              <NavButton>
                 <IconSpan />
                 <IconImg src={AboveAndBeyondIcon} />
                 <NavButtonH2 onClick={aboHandleShow}>
@@ -165,7 +165,7 @@ function SideBar() {
               </NavButton>
             </NavLi>
             <NavLi>
-              <NavButton to="/">
+              <NavButton>
                 <IconSpan />
                 <IconImg src={BeyondGratefulIcon} />
                 <NavButtonH2 onClick={beyHandleShow}>
@@ -174,7 +174,7 @@ function SideBar() {
               </NavButton>
             </NavLi>
             <NavLi>
-              <NavButton to="/">
+              <NavButton>
                 <IconSpan />
                 <IconImg src={PlacemakerIcon} />
                 <NavButtonH2 onClick={placeHandleShow}>Placemaker</NavButtonH2>

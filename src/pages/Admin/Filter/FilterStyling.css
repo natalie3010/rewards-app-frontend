@@ -1,0 +1,28 @@
+/* .btn-primary{
+    widt
+} */
+.btn-light {
+  color: #fff !important;
+  background-color: #007ad0 !important;
+  border-color: #007ad0 !important;
+  position: absolute !important;
+  left: 5% !important;
+  width: 20% !important;
+  top: 110% !important;
+}
+.btn-dark {
+  color: #fff !important;
+  background-color: #007ad0 !important;
+  border-color: #007ad0 !important;
+  position: absolute !important;
+  left: 5% !important;
+  width: 20% !important;
+  top: 145% !important;
+}
+/* 
+.date1 {
+  margin-left: -100px !important;
+}
+.date2 {
+  margin-left: -100px !important;
+} */

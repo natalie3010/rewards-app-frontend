@@ -51,7 +51,7 @@ export const NavLi = styled.li`
   cursor: pointer;
 `;
 
-export const NavButton = styled(Link)`
+export const NavButton = styled.div`
   position: relative;
   display: flex;
   text-decoration: none;
