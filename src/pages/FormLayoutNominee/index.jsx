@@ -180,7 +180,17 @@ function FormLayoutNominee() {
                   </Form.Group>
                   <Row className="mb-3">
                     <Form.Group as={Col}>
-                      <Form.Label> Category Nominated for* </Form.Label>
+                      <Form.Label>
+                        {" "}
+                        Category Nominated for*{" "}
+                        <OverlayTrigger
+                          placement="right"
+                          delay={{ show: 250, hide: 400 }}
+                          overlay={renderTooltip}
+                        >
+                          <IconImg src={Icon} />
+                        </OverlayTrigger>
+                      </Form.Label>
 
                       <Form.Select
                         type="dropdown"
