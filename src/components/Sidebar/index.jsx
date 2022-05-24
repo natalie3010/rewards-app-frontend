@@ -197,7 +197,7 @@ function SideBar() {
         </Modal.Header>
         <Modal.Body>
           Tell us about how the nominee has made a valuable contribution to the
-          project / program/practice
+          project/program/practice.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={alphaHandleClose}>
@@ -218,7 +218,7 @@ function SideBar() {
         </Modal.Header>
         <Modal.Body>
           How does the nominee exemplify a positive attitude, inspire others to
-          higher achievement, and uplift and support others
+          higher achievement, and uplift and support others.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={starHandleClose}>
@@ -356,7 +356,7 @@ function SideBar() {
           tasks or services in an exemplary manner, have gone “above and beyond”
           what is expected in their normal range of responsibilities, and/ or
           have improved the quality of deliverables/ Customer satisfaction or
-          Profitability
+          Profitability.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={aboHandleClose}>
@@ -376,10 +376,10 @@ function SideBar() {
           <Modal.Title>Beyond Grateful</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          This award is to thanks an individual for their support and help with
+          This award is to thank an individual for their support and help with
           anything within the project or practice. Has the nominee contributed
           to the growth on the Practice by helping in recruitment or by
-          supporting bids ?
+          supporting bids?
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={beyHandleClose}>
@@ -401,7 +401,7 @@ function SideBar() {
         <Modal.Body>
           This award will celebrate a technology or solution that elevates our
           presence within the customer organisation or helps making a Got-to-
-          Market differentiator
+          Market differentiator.
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={placeHandleClose}>
