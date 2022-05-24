@@ -1,8 +1,7 @@
-import { useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
-import Logo from '../../assets/Logo.svg';
-import { NominateButton } from './LandingElements';
-import './LandingStyles.css';
+import { useEffect } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import Logo from "../../assets/Logo.svg";
+import "./LandingStyles.css";
 
 function Landing() {
   const navigate = useNavigate();
@@ -21,10 +20,16 @@ function Landing() {
         className="logo position-absolute top-50 start-50 translate-middle"
       />
       <div>
-        <h1 className="title position-absolute top-50 start-50 translate-middle">Welcome to Capgemini's Tech Practice UK's Rewards App</h1>
-        <h2 className="description position-absolute">You can nominate someone for an award here</h2>
+        <h1 className="title position-absolute top-50 start-50 translate-middle">
+          Welcome to Capgemini's Tech Practice UK's Rewards App
+        </h1>
+        <h2 className="description position-absolute">
+          You can nominate someone for an award here
+        </h2>
       </div>
-      <NominateButton >Nominate</NominateButton>
+      <Link to={"/auth"}>
+        <button className="nominate position-absolute">Nominate</button>
+      </Link>
     </div>
   );
 }
