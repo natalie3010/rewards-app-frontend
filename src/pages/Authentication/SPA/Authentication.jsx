@@ -30,6 +30,21 @@ const IdTokenContent = () => {
 
   function GetIdTokenClaims() {
     setIdTokenClaims(accounts[0].idTokenClaims);
+    let item = {
+      preferredUsername: accounts[0].idTokenClaims.preferred_username,
+    };
+    console.log(item);
+    console.log(typeof accounts[0].idTokenClaims.preferred_username);
+    console.log(accounts[0].idTokenClaims);
+    fetch("http://localhost:8080/test", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(item),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        console.log(result);
+      });
   }
 
   return (
