@@ -1,14 +1,14 @@
-import { useEffect } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import Logo from "../../assets/Logo.svg";
-import "./LandingStyles.css";
+import { useEffect } from 'react';
+import { Link, useNavigate } from 'react-router-dom';
+import Logo from '../../assets/Logo.svg';
+import './LandingStyles.css';
 
 function Landing() {
   const navigate = useNavigate();
 
   useEffect(() => {
     setTimeout(() => {
-      // navigate('/auth');
+      navigate('/auth');
     }, 2250);
   });
 
@@ -27,7 +27,7 @@ function Landing() {
           You can nominate someone for an award here
         </h2>
       </div>
-      <Link to={"/auth"}>
+      <Link to={'/auth'}>
         <button className="nominate position-absolute">Nominate</button>
       </Link>
     </div>
