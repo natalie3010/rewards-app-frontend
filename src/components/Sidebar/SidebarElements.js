@@ -98,6 +98,7 @@ export const IconSpan = styled.span`
 `;
 
 export const IconImg = styled.img`
-  height: 40px;
-  margin-left: -20px;
+  height: 100px;
+  margin-left: 0px;
+  margin-top: 10px;
 `;

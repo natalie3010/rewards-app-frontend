@@ -1,17 +1,19 @@
-import { useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/Logo.svg';
 import './LandingStyles.css';
+import AboveAndBeyondIcon from "../../assets/AboveAndBeyondIcon.svg";
+import AlphaIcon from "../../assets/AlphaIcon.svg";
+import BeyondGratefulIcon from "../../assets/BeyondGratefulIcon.svg";
+import CommunityIcon from "../../assets/CommunityIcon.svg";
+import PathFinderIcon from "../../assets/PathFinderIcon.svg";
+import PlacemakerIcon from "../../assets/PlacemakerIcon.svg";
+import PositiveRadiatorIcon from "../../assets/PositiveRadiatorIcon.svg";
+import ProfessionalIcon from "../../assets/ProfessionalIcon.svg";
+import ShiningStarIcon from "../../assets/ShiningStarIcon.svg";
+import SpartanSpiritIcon from "../../assets/SpartanSpiritIcon.svg";
+import { IconImg } from "./LandingElements";
 
 function Landing() {
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    setTimeout(() => {
-      navigate('/auth');
-    }, 2250);
-  });
-
   return (
     <div className="w-100 h-100 ">
       <img
@@ -30,6 +32,7 @@ function Landing() {
       <Link to={'/auth'}>
         <button className="nominate position-absolute">Nominate</button>
       </Link>
+      <IconImg src={AlphaIcon} />
     </div>
   );
 }

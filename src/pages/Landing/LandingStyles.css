@@ -1,5 +1,6 @@
 .logo {
   animation: fade-in-down 2s ease forwards;
+  margin-top: -100px;
 }
 
 @keyframes fade-in-down {
@@ -13,19 +14,24 @@
   }
 }
 
+.title {
+  margin-top: 0px;
+  margin-left: 0px;
+  font-size: 22px;
+  color: #12abdb;
+}
 
 .description {
-  margin-top: 500px;
+  margin-top: 400px;
   margin-left: 530px;
   font-size: 22px;
   color: #12abdb;
-  
 }
 
 .nominate {
   width: 150px;
   height: 40px;
-  margin-top: 550px;
+  margin-top: 500px;
   margin-left: 650px;
   background-color: white;
   border-color: #12abdb;
