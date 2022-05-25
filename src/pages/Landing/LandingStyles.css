@@ -12,3 +12,23 @@
     transform: translateY(0) translateY(-50%) translateX(-50%);
   }
 }
+
+
+.description {
+  margin-top: 500px;
+  margin-left: 530px;
+  font-size: 22px;
+  color: #12abdb;
+  
+}
+
+.nominate {
+  width: 150px;
+  height: 40px;
+  margin-top: 550px;
+  margin-left: 650px;
+  background-color: white;
+  border-color: #12abdb;
+  border-radius: 10px;
+  color: #0070ad;
+}
