@@ -19,7 +19,7 @@ function Filter() {
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   function downloadSpreadsheet(startDate, endDate) {
-    const URL = `http://localhost:8080/v1/nominations/spreadsheet/${startDate}/${endDate}`;
+    const URL = `https://nomination-rewardsportal.azurewebsites.net/v1/nominations/spreadsheet/${startDate}/${endDate}`;
 
     axios
       .get(URL, {
