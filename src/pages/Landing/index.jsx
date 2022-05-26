@@ -1,17 +1,15 @@
 import { Link, useNavigate } from 'react-router-dom';
 import Logo from '../../assets/Logo.svg';
 import './LandingStyles.css';
-import AboveAndBeyondIcon from "../../assets/AboveAndBeyondIcon.svg";
-import AlphaIcon from "../../assets/AlphaIcon.svg";
-import BeyondGratefulIcon from "../../assets/BeyondGratefulIcon.svg";
-import CommunityIcon from "../../assets/CommunityIcon.svg";
-import PathFinderIcon from "../../assets/PathFinderIcon.svg";
-import PlacemakerIcon from "../../assets/PlacemakerIcon.svg";
-import PositiveRadiatorIcon from "../../assets/PositiveRadiatorIcon.svg";
-import ProfessionalIcon from "../../assets/ProfessionalIcon.svg";
-import ShiningStarIcon from "../../assets/ShiningStarIcon.svg";
-import SpartanSpiritIcon from "../../assets/SpartanSpiritIcon.svg";
-import { IconImg1, IconImg2, IconImg3, IconImg4, IconImg5, IconImg6, IconImg7, IconImg8, } from "./LandingElements";
+import AboveAndBeyondLanding from "../../assets/AboveAndBeyondLanding.svg";
+import AlphaLanding from "../../assets/AlphaLanding.svg";
+import BeyondGratefulLanding from "../../assets/BeyondGratefulLanding.svg";
+import CommunityLanding from "../../assets/CommunityLanding.svg";
+import PathFinderLanding from "../../assets/PathFinderLanding.svg";
+import PlacemakerLanding from "../../assets/PlacemakerLanding.svg";
+import PositiveRadiatorLanding from "../../assets/PositiveRadiatorLanding.svg";
+import ProfessionalLanding from "../../assets/ProfessionalLanding.svg";
+import { LandingImg1, LandingImg2, LandingImg3, LandingImg4, LandingImg5, LandingImg6, LandingImg7, LandingImg8, } from "./LandingElements";
 
 function Landing() {
   return (
@@ -34,14 +32,14 @@ function Landing() {
       </Link>
 
       <div>
-      <IconImg1 src={AboveAndBeyondIcon} />
-      <IconImg2 src={AlphaIcon} />
-      <IconImg3 src={BeyondGratefulIcon} />
-      <IconImg4 src={CommunityIcon} />
-      <IconImg5 src={PathFinderIcon} />
-      <IconImg6 style={{fill: "black"}} src={PlacemakerIcon} />
-      <IconImg7 style={{fill: "black"}} src={PositiveRadiatorIcon} />
-      <IconImg8 style={{fill: "black"}} src={ProfessionalIcon} />  
+      <LandingImg1 src={AboveAndBeyondLanding} />
+      <LandingImg2 src={AlphaLanding} />
+      <LandingImg3 src={BeyondGratefulLanding} />
+      <LandingImg4 src={CommunityLanding} />
+      <LandingImg5 src={PathFinderLanding} />
+      <LandingImg6 src={PlacemakerLanding} />
+      <LandingImg7 src={PositiveRadiatorLanding} />
+      <LandingImg8 src={ProfessionalLanding} />  
       </div>
       
     </div>
