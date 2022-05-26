@@ -7,7 +7,7 @@ position: relative;
 
 export const LandingImg1 = styled.img`
   height: 25px;
-  margin-left: 570px;
+  margin-left: 580px;
   margin-top: 470px;
   animation: fade-in-down 1s ease forwards;
 `;
@@ -46,15 +46,15 @@ export const LandingImg5 = styled.img`
 export const LandingImg6 = styled.img`
   height: 25px;
   margin-left: 15px;
-  margin-top: 550px;
+  margin-top: 560px;
   animation: fade-in-down 6s ease forwards;
 `;
 
 
 export const LandingImg7 = styled.img`
   height: 25px;
-  margin-left: 15px;
-  margin-top: 510px;
+  margin-left: 19px;
+  margin-top: 520px;
   animation: fade-in-down 7s ease forwards;
 `;
 
