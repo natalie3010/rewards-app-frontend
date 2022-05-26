@@ -101,21 +101,21 @@ function SideBar() {
             <NavLi>
               <NavButton>
                 <IconSpan />
-                <IconImg style={{ fill: "white" }} src={AlphaIcon} />
+                <IconImg src={AlphaIcon} />
                 <NavButtonH2 onClick={alphaHandleShow}>The Alpha</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton>
                 <IconSpan />
-                <IconImg style={{ fill: "white" }} src={ShiningStarIcon} />
+                <IconImg src={ShiningStarIcon} />
                 <NavButtonH2 onClick={starHandleShow}>Shining Star</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton>
                 <IconSpan />
-                <IconImg style={{ fill: "white" }} src={ProfessionalIcon} />
+                <IconImg src={ProfessionalIcon} />
                 <NavButtonH2 onClick={profHandleShow}>
                   Mr./Ms. Professional
                 </NavButtonH2>
@@ -124,7 +124,7 @@ function SideBar() {
             <NavLi>
               <NavButton>
                 <IconSpan />
-                <IconImg style={{ fill: "#ffff" }} src={PositiveRadiatorIcon} />
+                <IconImg src={PositiveRadiatorIcon} />
                 <NavButtonH2 onClick={posHandleShow}>
                   Positive Radiator
                 </NavButtonH2>
@@ -133,14 +133,14 @@ function SideBar() {
             <NavLi>
               <NavButton>
                 <IconSpan />
-                <IconImg style={{ fill: "white" }} src={PathFinderIcon} />
+                <IconImg src={PathFinderIcon} />
                 <NavButtonH2 onClick={pathHandleShow}>Path Finder</NavButtonH2>
               </NavButton>
             </NavLi>
             <NavLi>
               <NavButton>
                 <IconSpan />
-                <IconImg style={{ fill: "white" }} src={SpartanSpiritIcon} />
+                <IconImg src={SpartanSpiritIcon} />
                 <NavButtonH2 onClick={sparHandleShow}>
                   Spartan Spirit Award
                 </NavButtonH2>
@@ -149,7 +149,7 @@ function SideBar() {
             <NavLi>
               <NavButton>
                 <IconSpan />
-                <IconImg style={{ fill: "white" }} src={CommunityIcon} />
+                <IconImg src={CommunityIcon} />
                 <NavButtonH2 onClick={comHandleShow}>
                   Community-centred
                 </NavButtonH2>
@@ -158,7 +158,7 @@ function SideBar() {
             <NavLi>
               <NavButton>
                 <IconSpan />
-                <IconImg style={{ fill: "white" }} src={AboveAndBeyondIcon} />
+                <IconImg src={AboveAndBeyondIcon} />
                 <NavButtonH2 onClick={aboHandleShow}>
                   Above and Beyond
                 </NavButtonH2>
@@ -167,7 +167,7 @@ function SideBar() {
             <NavLi>
               <NavButton>
                 <IconSpan />
-                <IconImg style={{ fill: "white" }} src={BeyondGratefulIcon} />
+                <IconImg src={BeyondGratefulIcon} />
                 <NavButtonH2 onClick={beyHandleShow}>
                   Beyond Grateful
                 </NavButtonH2>

@@ -17,8 +17,6 @@ export const LandingImg2 = styled.img`
   margin-left: 10px;
   margin-top: 550px;
   animation: fade-in-down 2s ease forwards;
-}
-
 `;
 
 export const LandingImg3 = styled.img`
