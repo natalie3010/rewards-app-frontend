@@ -73,7 +73,7 @@ function FormLayoutNominee() {
     console.log("clicked");
     console.log(values);
     axios
-      .post(`http://localhost:8080/v1/nominations/nomination`, values, {
+      .post(`https://nomination-rewardsportal.azurewebsites.net/v1/nominations/nomination`, values, {
         headers: {
           "Content-Type": "application/json",
           "Access-Control-Allow-Origin": "*",

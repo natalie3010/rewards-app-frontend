@@ -2,7 +2,7 @@ import { useState } from "react";
 import axios from "axios";
 
 //Self-explanatory - you will only need the endpoint in your API calls
-const BASE_URL = "http://localhost:8080";
+const BASE_URL = "https://nomination-rewardsportal.azurewebsites.net";
 
 //This works in a way that you only import the " import { apiProvider } from "../../../Services/API/Utilities/Provider"; " into your index
 //You then have create a const to call it, for example, for a getter, use " const apiGet = apiProvider.GetApi("30f7fdbf-0690-403c-8e93-c34aab34c60b"); "
