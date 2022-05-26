@@ -38,3 +38,8 @@
   border-radius: 10px;
   color: #0070ad;
 }
+
+.logo {
+  animation: fade-in-down 2s ease forwards;
+  margin-top: -100px;
+}

@@ -5,64 +5,65 @@ position: relative;
 `;
 
 
-export const IconImg1 = styled.img`
+export const LandingImg1 = styled.img`
   height: 25px;
   margin-left: 580px;
   margin-top: 470px;
-  color: red;
-  fill: yellow;
+  animation: fade-in-down 1s ease forwards;
 `;
 
-export const IconImg2 = styled.img`
+export const LandingImg2 = styled.img`
   height: 25px;
   margin-left: 10px;
   margin-top: 550px;
-  fill: aliceblue;
+  animation: fade-in-down 2s ease forwards;
+}
+
 `;
 
-export const IconImg3 = styled.img`
+export const LandingImg3 = styled.img`
   height: 25px;
   margin-left: 15px;
-  margin-top: 580px;
-  fill: aliceblue;
+  margin-top: 580px; 
+  animation: fade-in-down 3s ease forwards;
 `;
 
-export const IconImg4 = styled.img`
-  height: 25px;
-  margin-left: 15px;
-  margin-top: 590px;
-  fill: aliceblue;
-`;
-
-
-export const IconImg5 = styled.img`
+export const LandingImg4 = styled.img`
   height: 25px;
   margin-left: 15px;
   margin-top: 590px;
-  fill: aliceblue;
+  animation: fade-in-down 4s ease forwards;
 `;
 
-export const IconImg6 = styled.img`
+
+export const LandingImg5 = styled.img`
+  height: 25px;
+  margin-left: 24px;
+  margin-top: 590px;
+  animation: fade-in-down 5s ease forwards;
+`;
+
+export const LandingImg6 = styled.img`
   height: 25px;
   margin-left: 15px;
-  margin-top: 550px;
-  fill: aliceblue;
+  margin-top: 560px;
+  animation: fade-in-down 6s ease forwards;
 `;
 
 
-export const IconImg7 = styled.img`
+export const LandingImg7 = styled.img`
   height: 25px;
-  margin-left: 15px;
-  margin-top: 510px;
-  fill: aliceblue;
+  margin-left: 19px;
+  margin-top: 520px;
+  animation: fade-in-down 7s ease forwards;
 `;
 
 
-export const IconImg8 = styled.img`
+export const LandingImg8 = styled.img`
   height: 25px;
   margin-left: 10px;
   margin-top: 470px;
-  color: aliceblue;
+  animation: fade-in-down 8s ease forwards;
 `;
 
 
