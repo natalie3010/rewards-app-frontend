@@ -60,7 +60,7 @@ export const NavButton = styled.div`
   border-color: #0070ad;
   border-bottom: #0070ad;
   margin-top: 5%;
-  padding-top: 5%;
+  padding-top: 1%;
   border-right: #0070ad;
   cursor: pointer;
   transition: width 0.5s;
@@ -71,7 +71,8 @@ export const NavButton = styled.div`
     background-color: #12abdb;
     border-top-left-radius: 20px;
     border-bottom-left-radius: 20px;
-    left: 0%;
+    width: 300px;
+    left: 0px;
     border-color: #12abdb;
   }
 `;
@@ -98,7 +99,7 @@ export const IconSpan = styled.span`
 `;
 
 export const IconImg = styled.img`
-  height: 50px;
-  margin-left: -30px;
+  height: 40px;
+  margin-left: -25px;
   margin-top: 10px;
 `;
